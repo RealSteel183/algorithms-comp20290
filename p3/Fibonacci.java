@@ -1,6 +1,7 @@
 package p3;
 
 public class Fibonacci {
+    // Iterative calculation of the nth Fibonacci number
     private static long fibonacciIterative(int n) {
         if (n <= 1)
             return 1;
@@ -16,6 +17,7 @@ public class Fibonacci {
         return fib;
     }
 
+    // Recursive calculation of the nth Fibonacci number
     private static long fib(int n) {
         if (n <= 1) {
             return n;

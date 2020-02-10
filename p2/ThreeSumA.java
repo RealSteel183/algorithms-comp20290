@@ -1,11 +1,12 @@
 package p2;
 
+import java.util.concurrent.TimeUnit;
+
 /**
- *  Compilation:  javac ThreeSumA.java
- *  Execution:    java ThreeSum input.txt
+ * Compilation: javac ThreeSumA.java Execution: java ThreeSum input.txt
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 
 public class ThreeSumA {
@@ -47,7 +48,12 @@ public class ThreeSumA {
     public static void main(String[] args) {
         In in = new In(args[0]);
         int[] a = in.readAllInts();
+        final long t1 = System.currentTimeMillis();
         int count = count(a);
-        System.out.println("count =" + count);
+        final long t2 = System.currentTimeMillis();
+        long elapsed = (t2 - t1) / 1000;
+
+        System.out.println("count = " + count);
+        System.out.println("Time taken = " + elapsed + " secs");
     }
 }

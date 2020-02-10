@@ -1,5 +1,10 @@
 package p3;
 
+/**
+ * Recursive solution to the Towers of Hanoi problem.
+ * 
+ * @author Rajit Banerjee
+ */
 public class Hanoi {
     /**
      * Moves a given number of disks from source to destination.

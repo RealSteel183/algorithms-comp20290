@@ -1,5 +1,10 @@
 package p1;
 
+/**
+ * Multiplication of two numbers using the Russian Peasant's algorithm.
+ * 
+ * @author Rajit Banerjee
+ */
 import java.util.Scanner;
 
 public class RussianPeasant {

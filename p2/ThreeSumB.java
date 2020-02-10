@@ -1,6 +1,6 @@
 package p2;
 
-/*
+/**
  *  Compilation:  javac ThreeSumB.java
  *  Execution:    java ThreeSumB input.txt
  *
@@ -14,7 +14,6 @@ package p2;
  *     
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
- *
  */
 
 import java.util.Arrays;

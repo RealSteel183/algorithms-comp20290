@@ -1,6 +1,6 @@
 package p2;
 
-/*
+/**
  *  Compilation:  javac ThreeSumA.java
  *  Execution:    java ThreeSum input.txt
  *

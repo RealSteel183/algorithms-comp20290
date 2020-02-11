@@ -1,7 +1,5 @@
 package p2;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Compilation: javac ThreeSumA.java Execution: java ThreeSum input.txt
  *

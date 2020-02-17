@@ -93,6 +93,7 @@ public class SortTest {
         System.out.println(ans);
     }
 
+    // print a line of 80 dashes
     private static void printLine() {
         for (int i = 0; i < 80; i++) {
             System.out.print("-");

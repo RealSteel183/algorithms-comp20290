@@ -108,13 +108,13 @@ public class SortTest {
         System.arraycopy(a, 0, a1, 0, a.length);
         System.arraycopy(b, 0, b1, 0, b.length);
 
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[0]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[0]);
         display(a1);
         System.out.print("After selection sort:\t\t");
         Sort.selection(a1);
         display(a1);
 
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[1]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[1]);
         display(b1);
         System.out.print("After selection sort:\t\t");
         Sort.selection(b1);
@@ -128,13 +128,13 @@ public class SortTest {
         System.arraycopy(a, 0, a1, 0, a.length);
         System.arraycopy(b, 0, b1, 0, b.length);
         
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[0]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[0]);
         display(a1);
         System.out.print("After insertion sort:\t\t");
         Sort.insertion(a1);
         display(a1);
 
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[1]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[1]);
         display(b1);
         System.out.print("After insertion sort:\t\t");
         Sort.insertion(b1);
@@ -148,13 +148,13 @@ public class SortTest {
         System.arraycopy(a, 0, a1, 0, a.length);
         System.arraycopy(b, 0, b1, 0, b.length);
         
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[0]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[0]);
         display(a1);
         System.out.print("After bogo sort:\t\t");
         Sort.bogo(a1);
         display(a1);
 
-        System.out.printf("\nOrignal array (size %d):\t", SIZE[1]);
+        System.out.printf("\nOriginal array (size %d):\t", SIZE[1]);
         display(b1);
         System.out.print("After bogo sort:\t\t");
         Sort.bogo(b1);

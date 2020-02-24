@@ -5,12 +5,18 @@ import java.util.Scanner;
 
 public class SortTest {
     static Scanner sc = new Scanner(System.in);
-    private static int[] sizes = { 10, 12, 100, 1000, 10000 };
+    private static int[] array_sizes = {10, 12, 100, 1000, 10000};
     private static ArrayList<int[]> random_arrays = new ArrayList<>();
 
     // run tests for all 3 sorting algorithms with arrays of various sizes
     public static void main(String[] args) throws Exception {
-        generateRandomArrays(sizes);
+        String[] sortTypes = {"selection", "insertion", "bogo"};
+        runTests(sortTypes, array_sizes);
+    }
+
+    // display user options and perform tasks according to choice
+    public static void runTests(String[] sortTypes, int[] array_sizes) throws Exception {
+        generateRandomArrays(array_sizes);
         System.out.println("Welcome to Practical 4!");
         System.out.println("1. Run timing analysis.");
         System.out.println("2. See sorted arrays (only small sizes).");
@@ -18,24 +24,23 @@ public class SortTest {
         int op = sc.nextInt();
         switch (op) {
             case 1:
-                runTests("selection");
-                runTests("insertion");
-                runTests("bogo");
+                for (String type : sortTypes) {
+                    timingAnalysis(type);
+                }
                 break;
             case 2:
-                visualiseSort("selection");
-                visualiseSort("insertion");
-                visualiseSort("bogo");
+                for (String type : sortTypes) {
+                    visualiseSort(type);
+                }
                 break;
             default:
                 System.out.println("Invalid choice.");
         }
-
     }
 
     // generate random arrays of specified sizes
-    public static void generateRandomArrays(int[] sizes) {
-        for (int size : sizes) {
+    public static void generateRandomArrays(int[] array_sizes) {
+        for (int size : array_sizes) {
             random_arrays.add(generateArray(size));
         }
     }
@@ -51,7 +56,7 @@ public class SortTest {
     }
 
     // timing analysis
-    public static void runTests(String sortType) throws Exception {
+    public static void timingAnalysis(String sortType) throws Exception {
         printLine();
         System.out.printf("\n\n-%s SORT-\n", sortType.toUpperCase());
         for (int[] a : random_arrays) {
@@ -67,11 +72,12 @@ public class SortTest {
     public static void visualiseSort(String sortType) throws Exception {
         // copy only the first 2 small arrays of size 10 and 12
         // larger order array sizes are impractical to display in terminal
-        int[][] copy_arrays = { random_arrays.get(0), random_arrays.get(1) };
+        int[][] copy_arrays = {random_arrays.get(0), random_arrays.get(1)};
         for (int[] a : copy_arrays) {
             int[] array = new int[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
             Sort sort = new Sort(sortType, array);
+
             System.out.printf("\nORIGINAL ARRAY (size %d):\t", array.length);
             display(array);
             System.out.printf("AFTER %s SORT:\t\t", sortType.toUpperCase());

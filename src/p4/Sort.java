@@ -8,13 +8,15 @@ public class Sort implements Callable<int[]> {
     private Method sort;
     private int[] arr;
 
-    public Sort(String sortType, int[] arr) throws NoSuchMethodException, SecurityException {
+    public Sort(String sortType, int[] arr)
+            throws NoSuchMethodException, SecurityException {
         sort = Sort.class.getMethod(sortType, int[].class);
         this.arr = arr;
     }
 
     @Override
-    public int[] call() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public int[] call() throws IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException {
         sort.invoke(null, arr);
         return arr;
     }
@@ -38,10 +40,9 @@ public class Sort implements Callable<int[]> {
         for (int i = 1; i < arr.length; i++) {
             int key = arr[i];
             int j = i - 1;
-
             /*
-             * shift elements [0 to i-1] to the right as long as they are greater than key
-             * element
+             * shift elements [0 to i-1] to the right as long as
+             * they are greater than key element
              */
             while (j >= 0 && arr[j] > key) {
                 arr[j + 1] = arr[j--];
@@ -52,10 +53,10 @@ public class Sort implements Callable<int[]> {
 
     // merge sort algorithm
     public static void merge(int[] arr) {
-        // TODO
+
     }
 
-    // enchanced merge sort algorithm
+    // enhanced merge sort algorithm
     public static void cool_merge(int[] arr) {
         // TODO
     }
@@ -65,6 +66,18 @@ public class Sort implements Callable<int[]> {
         while (!isSorted(arr)) {
             shuffle(arr);
         }
+    }
+
+    // method to merge two sorted arrays together
+    private static void mergeHalves(int[] a, int[] b) {
+
+    }
+
+    // method to swap elements at indices i and j or given array
+    private static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     // check if given array is sorted
@@ -83,12 +96,5 @@ public class Sort implements Callable<int[]> {
             int random_index = (int) (Math.random() * a.length);
             swap(a, i, random_index);
         }
-    }
-
-    // method to swap elements at indices i and j or given array
-    private static void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
     }
 }

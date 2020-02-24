@@ -8,7 +8,7 @@ public class Sort implements Callable<int[]> {
     private Method sort;
     private int[] arr;
 
-    Sort(String sortType, int[] arr) throws NoSuchMethodException, SecurityException {
+    public Sort(String sortType, int[] arr) throws NoSuchMethodException, SecurityException {
         sort = Sort.class.getMethod(sortType, int[].class);
         this.arr = arr;
     }
@@ -56,7 +56,7 @@ public class Sort implements Callable<int[]> {
     }
 
     // enchanced merge sort algorithm
-    public static void mergeEnchanced(int[] arr) {
+    public static void merge_enhanced(int[] arr) {
         // TODO
     }
 

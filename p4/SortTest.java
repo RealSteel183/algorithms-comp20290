@@ -36,7 +36,7 @@ public class SortTest {
     }
 
     // timing analysis
-    private static void runTests(String sortType)
+    public static void runTests(String sortType)
             throws Exception {
         int[] a1 = new int[SIZE[0]];
         int[] b1 = new int[SIZE[1]];
@@ -59,7 +59,7 @@ public class SortTest {
     }
 
     // show the arrays before and after sorting
-    private static void visualiseSort(String sortType) throws Exception{
+    public static void visualiseSort(String sortType) throws Exception{
         int[] a1 = new int[SIZE[0]];
         int[] b1 = new int[SIZE[1]];
         System.arraycopy(a, 0, a1, 0, a.length);
@@ -76,7 +76,7 @@ public class SortTest {
     }
 
     // generate a randomly filled array of given size
-    private static int[] generateArray(int size) {
+    public static int[] generateArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             // fill array with random elements between [0, size)
@@ -86,7 +86,7 @@ public class SortTest {
     }
 
     // display the array elements
-    private static void display(int[] arr) {
+    public static void display(int[] arr) {
         String ans = "{ ";
         for (int i = 0; i < arr.length - 1; i++) {
             ans += arr[i] + ", ";
@@ -96,7 +96,7 @@ public class SortTest {
     }
 
     // print a line of 80 dashes
-    private static void printLine() {
+    public static void printLine() {
         System.out.println();
         for (int i = 0; i < 80; i++) {
             System.out.print("-");

@@ -35,6 +35,13 @@ public class Sort implements Callable<int[]> {
         }
     }
 
+    // stupid sort - BogoSort algorithm
+    public static void bogo(int[] arr) {
+        while (!isSorted(arr)) {
+            shuffle(arr);
+        }
+    }
+
     // insertion sort algorithm
     public static void insertion(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
@@ -53,7 +60,14 @@ public class Sort implements Callable<int[]> {
 
     // merge sort algorithm
     public static void merge(int[] arr) {
-
+        if (arr.length < 2) {
+            return;
+        }
+        int[] leftHalf = half(arr, 0, arr.length / 2 - 1);
+        int[] rightHalf = half(arr, arr.length / 2, arr.length - 1);
+        merge(leftHalf);
+        merge(rightHalf);
+        mergeHalves(arr, leftHalf, rightHalf);
     }
 
     // enhanced merge sort algorithm
@@ -61,16 +75,29 @@ public class Sort implements Callable<int[]> {
         // TODO
     }
 
-    // stupid sort - BogoSort algorithm
-    public static void bogo(int[] arr) {
-        while (!isSorted(arr)) {
-            shuffle(arr);
-        }
+    // method to generate the left/right half of an array
+    private static int[] half(int[] a, int start, int end) {
+        int[] ans = new int[end - start + 1];
+        System.arraycopy(a, start, ans, 0, end - start + 1);
+        return ans;
     }
 
     // method to merge two sorted arrays together
-    private static void mergeHalves(int[] a, int[] b) {
-
+    private static void mergeHalves(int[] arr, int[] left, int[] right) {
+        int x = 0, y = 0, index = 0;
+        while (x < left.length && y < right.length) {
+            if (left[x] <= right[y]) {
+                arr[index++] = left[x++];
+            } else {
+                arr[index++] = right[y++];
+            }
+        }
+        while (x < left.length) {
+            arr[index++] = left[x++];
+        }
+        while (y < right.length) {
+            arr[index++] = right[y++];
+        }
     }
 
     // method to swap elements at indices i and j or given array

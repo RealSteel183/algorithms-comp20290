@@ -5,7 +5,7 @@ public class EnhancedSortTest {
 
     // run tests for all 3 sorting algorithms with arrays of various sizes
     public static void main(String[] args) throws Exception {
-        String[] sortTypes = {"insertion", "merge", "cool_merge"};
+        String[] sortTypes = {"insertion", "merge"};
         p4.SortTest.runTests(sortTypes, array_sizes);
     }
 }

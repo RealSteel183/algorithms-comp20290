@@ -56,7 +56,7 @@ public class Sort implements Callable<int[]> {
     }
 
     // enchanced merge sort algorithm
-    public static void merge_enhanced(int[] arr) {
+    public static void cool_merge(int[] arr) {
         // TODO
     }
 

@@ -1,12 +1,12 @@
 package p1;
 
-/**
- * Multiplication of two numbers using the Russian Peasant's algorithm.
- * 
- * @author Rajit Banerjee
- */
 import java.util.Scanner;
 
+/**
+ * Multiplication of two numbers using the Russian Peasant's algorithm.
+ *
+ * @author Rajit Banerjee
+ */
 public class RussianPeasant {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

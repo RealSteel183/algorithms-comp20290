@@ -1,23 +1,22 @@
 package p2;
 
-/**
- *  Compilation:  javac ThreeSumB.java
- *  Execution:    java ThreeSumB input.txt
- *
- *  Reads n integers
- *  and counts the number of triples that sum to exactly 0.
- *
- *  Limitations
- *  -----------
- *     - we ignore integer overflow
- *     - doesn't handle case when input has duplicates
- *     
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
- */
-
 import java.util.Arrays;
 
+/**
+ * Compilation:  javac ThreeSumB.java
+ * Execution:    java ThreeSumB input.txt
+ * <p>
+ * Reads n integers
+ * and counts the number of triples that sum to exactly 0.
+ * <p>
+ * Limitations
+ * -----------
+ * - we ignore integer overflow
+ * - doesn't handle case when input has duplicates
+ *
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
+ */
 public class ThreeSumB {
 
     // Do not instantiate.
@@ -38,7 +37,7 @@ public class ThreeSumB {
      *
      * @param a the array of integers
      * @return the number of triples (i, j, k) with {@code i < j < k} such that
-     *         {@code a[i] + a[j] + a[k] == 0}
+     * {@code a[i] + a[j] + a[k] == 0}
      */
     public static int count(int[] a) {
         int n = a.length;

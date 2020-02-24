@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class EnhancedSortTest {
     static Scanner sc = new Scanner(System.in);
-    private static int[] sizes = { 10, 12, 100, 1000, 10000, 100000, 1000000 };
+    private static int[] sizes = { 10, 12, 100, 1000, 10000, 100000};
 
     // run tests for all 3 sorting algorithms with arrays of various sizes
     public static void main(String[] args) throws Exception {

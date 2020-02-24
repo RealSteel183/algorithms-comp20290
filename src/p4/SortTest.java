@@ -33,10 +33,10 @@ public class SortTest {
 
     }
 
-    // generate random arrays of specifed sizes
+    // generate random arrays of specified sizes
     public static void generateRandomArrays(int[] sizes) {
-        for (int i = 0; i < sizes.length; i++) {
-            random_arrays.add(generateArray(sizes[i]));
+        for (int size : sizes) {
+            random_arrays.add(generateArray(size));
         }
     }
 
@@ -58,7 +58,7 @@ public class SortTest {
             int[] array = new int[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
             Sort sort = new Sort(sortType, array);
-            System.out.printf("Time taken for array of size %d =\t%d nanosec\n", array.length,
+            System.out.printf("Time taken for array of size %d = %d nanosec\n", array.length,
                     Timing.nanoTimePerformance(sort));
         }
     }
@@ -82,11 +82,11 @@ public class SortTest {
 
     // display the array elements
     public static void display(int[] arr) {
-        String ans = "{ ";
+        StringBuilder ans = new StringBuilder("{ ");
         for (int i = 0; i < arr.length - 1; i++) {
-            ans += arr[i] + ", ";
+            ans.append(arr[i]).append(", ");
         }
-        ans += arr[arr.length - 1] + " }";
+        ans.append(arr[arr.length - 1]).append(" }");
         System.out.println(ans);
     }
 

@@ -1,6 +1,24 @@
 package p4;
 
-public class Sort {
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.concurrent.Callable;
+
+public class Sort implements Callable<int[]> {
+    private Method sort;
+    private int[] arr;
+
+    Sort(String sortType, int[] arr) throws NoSuchMethodException, SecurityException {
+        sort = Sort.class.getMethod(sortType, int[].class);
+        this.arr = arr;
+    }
+
+    @Override
+    public int[] call() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        sort.invoke(null, arr);
+        return arr;
+    }
+
     // selection sort algorithm
     public static void selection(int[] arr) {
         int min_index;
@@ -32,17 +50,27 @@ public class Sort {
         }
     }
 
+    // merge sort algorithm
+    public static void merge(int[] arr) {
+        // TODO
+    }
+
+    // enchanced merge sort algorithm
+    public static void mergeEnchanced(int[] arr) {
+        // TODO
+    }
+
     // stupid sort - BogoSort algorithm
     public static void bogo(int[] arr) {
-        while(!isSorted(arr)) {
+        while (!isSorted(arr)) {
             shuffle(arr);
-        }        
+        }
     }
 
     // check if given array is sorted
-    private static boolean isSorted(int[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
+    private static boolean isSorted(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
                 return false;
             }
         }
@@ -50,17 +78,17 @@ public class Sort {
     }
 
     // randomly shuffle array elements
-    private static void shuffle(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int random_index = (int)(Math.random() * arr.length);
-            swap(arr, i, random_index);
+    private static void shuffle(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            int random_index = (int) (Math.random() * a.length);
+            swap(a, i, random_index);
         }
     }
 
     // method to swap elements at indices i and j or given array
-    private static void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    private static void swap(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }

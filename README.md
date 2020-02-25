@@ -5,7 +5,7 @@ The portfolio contains separate packages for every practical session, each with:
 * .java source files for the code,
 * any other required files (e.g. text files).
 
-Developed using IntelliJ IDEA and Microsoft Word.
+Developed using IntelliJ IDEA and Microsoft Office.
 
 #### Authors:
 * [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817

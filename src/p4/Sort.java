@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
 public class Sort implements Callable<int[]> {
-    private static final int CUTOFF = 5; // for smaller sub-arrays in merge sort
+    private static final int CUTOFF = 10; // for smaller sub-arrays in merge sort
     private Method sort;
     private int[] arr;
 
@@ -84,7 +84,7 @@ public class Sort implements Callable<int[]> {
 
     // enhanced merge sort algorithm
     public static void fast_merge(int[] arr) {
-        if (arr.length < CUTOFF) {
+        if (arr.length <= CUTOFF) {
             insertion(arr);
         } else {
             int mid = arr.length / 2;
@@ -92,21 +92,22 @@ public class Sort implements Callable<int[]> {
             int[] rightHalf = half(arr, mid, arr.length - 1);
             fast_merge(leftHalf);
             fast_merge(rightHalf);
-            mergeHalves(arr, leftHalf, rightHalf);
-//            if (leftHalf[leftHalf.length - 1] >= rightHalf[rightHalf.length - 1]) {
-//                mergeHalves(arr, leftHalf, rightHalf);
-//            }
+            if (leftHalf[leftHalf.length - 1] > rightHalf[0]) {
+                mergeHalves(arr, leftHalf, rightHalf);
+            } else {
+                joinHalves(arr, leftHalf, rightHalf);
+            }
         }
     }
 
     // method to generate the left/right half of an array
     private static int[] half(int[] a, int start, int end) {
         int[] ans = new int[end - start + 1];
-        System.arraycopy(a, start, ans, 0, end - start + 1);
+        System.arraycopy(a, start, ans, 0, ans.length);
         return ans;
     }
 
-    // method to merge two sorted arrays together
+    // merge two sorted arrays together
     private static void mergeHalves(int[] arr, int[] left, int[] right) {
         int x = 0, y = 0, index = 0;
         while (x < left.length && y < right.length) {
@@ -124,7 +125,13 @@ public class Sort implements Callable<int[]> {
         }
     }
 
-    // method to swap elements at indices i and j or given array
+    // join two halves of an array
+    private static void joinHalves(int[] arr, int[] left, int[] right) {
+        System.arraycopy(left, 0, arr, 0, left.length);
+        System.arraycopy(right, 0, arr, left.length, right.length);
+    }
+
+    // swap elements at indices i and j or given array
     private static void swap(int[] a, int i, int j) {
         int temp = a[i];
         a[i] = a[j];

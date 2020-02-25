@@ -58,7 +58,7 @@ public class SortTest {
     // timing analysis
     public static void timingAnalysis(String sortType) throws Exception {
         printLine();
-        System.out.printf("\n\n-%s SORT-\n", sortType.toUpperCase());
+        System.out.printf("-%s SORT-\n", sortType.toUpperCase());
         for (int[] a : random_arrays) {
             int[] array = new int[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
@@ -98,10 +98,9 @@ public class SortTest {
         System.out.println(ans);
     }
 
-    // print a line of 80 dashes
+    // print a line of dashes
     public static void printLine() {
-        System.out.println();
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 57; i++) {
             System.out.print("-");
         }
         System.out.println();

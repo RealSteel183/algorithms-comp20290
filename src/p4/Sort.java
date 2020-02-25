@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
 public class Sort implements Callable<int[]> {
+    private static final int CUTOFF = 5; // for smaller sub-arrays in merge sort
     private Method sort;
     private int[] arr;
-    private static final int CUTOFF = 10; // for smaller sub-arrays in merge sort
 
     public Sort(String sortType, int[] arr)
             throws NoSuchMethodException, SecurityException {
@@ -20,6 +20,16 @@ public class Sort implements Callable<int[]> {
             IllegalArgumentException, InvocationTargetException {
         sort.invoke(null, arr);
         return arr;
+    }
+
+    // check if given array is sorted
+    public static boolean isSorted(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // selection sort algorithm
@@ -118,16 +128,6 @@ public class Sort implements Callable<int[]> {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
-    }
-
-    // check if given array is sorted
-    private static boolean isSorted(int[] a) {
-        for (int i = 0; i < a.length - 1; i++) {
-            if (a[i] > a[i + 1]) {
-                return false;
-            }
-        }
-        return true;
     }
 
     // randomly shuffle array elements

@@ -17,7 +17,7 @@ public class SortTest {
     // display user options and perform tasks according to choice
     public static void runTests(String[] sortTypes, int[] array_sizes) throws Exception {
         generateRandomArrays(array_sizes);
-        System.out.println("Welcome to Practical 4!");
+        System.out.println("-Sorting Analysis-");
         System.out.println("1. Run timing analysis.");
         System.out.println("2. See sorted arrays (only small sizes).");
         System.out.print("Choose 1 or 2: ");
@@ -65,6 +65,7 @@ public class SortTest {
             Sort sort = new Sort(sortType, array);
             System.out.printf("Time taken for array of size %d = %d nanosec\n", array.length,
                     Timing.nanoTimePerformance(sort));
+            if (!Sort.isSorted(array)) throw new AssertionError("Sort didn't work!");
         }
     }
 

@@ -7,6 +7,7 @@ import java.util.concurrent.Callable;
 public class Sort implements Callable<int[]> {
     private Method sort;
     private int[] arr;
+    private static final int CUTOFF = 10; // for smaller sub-arrays in merge sort
 
     public Sort(String sortType, int[] arr)
             throws NoSuchMethodException, SecurityException {
@@ -63,16 +64,28 @@ public class Sort implements Callable<int[]> {
         if (arr.length < 2) {
             return;
         }
-        int[] leftHalf = half(arr, 0, arr.length / 2 - 1);
-        int[] rightHalf = half(arr, arr.length / 2, arr.length - 1);
+        int mid = arr.length / 2;
+        int[] leftHalf = half(arr, 0, mid - 1);
+        int[] rightHalf = half(arr, mid, arr.length - 1);
         merge(leftHalf);
         merge(rightHalf);
         mergeHalves(arr, leftHalf, rightHalf);
     }
 
     // enhanced merge sort algorithm
-    public static void cool_merge(int[] arr) {
-        // TODO
+    public static void fast_merge(int[] arr) {
+        if (arr.length <= CUTOFF) {
+            insertion(arr);
+        } else {
+            int mid = arr.length / 2;
+            int[] leftHalf = half(arr, 0, mid - 1);
+            int[] rightHalf = half(arr, mid, arr.length - 1);
+            fast_merge(leftHalf);
+            fast_merge(rightHalf);
+            if (arr[mid] > arr[mid + 1]) {
+                mergeHalves(arr, leftHalf, rightHalf);
+            }
+        }
     }
 
     // method to generate the left/right half of an array

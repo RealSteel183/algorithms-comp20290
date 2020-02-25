@@ -84,7 +84,7 @@ public class Sort implements Callable<int[]> {
 
     // enhanced merge sort algorithm
     public static void fast_merge(int[] arr) {
-        if (arr.length <= CUTOFF) {
+        if (arr.length < CUTOFF) {
             insertion(arr);
         } else {
             int mid = arr.length / 2;
@@ -92,9 +92,10 @@ public class Sort implements Callable<int[]> {
             int[] rightHalf = half(arr, mid, arr.length - 1);
             fast_merge(leftHalf);
             fast_merge(rightHalf);
-            if (arr[mid] > arr[mid + 1]) {
-                mergeHalves(arr, leftHalf, rightHalf);
-            }
+            mergeHalves(arr, leftHalf, rightHalf);
+//            if (leftHalf[leftHalf.length - 1] >= rightHalf[rightHalf.length - 1]) {
+//                mergeHalves(arr, leftHalf, rightHalf);
+//            }
         }
     }
 

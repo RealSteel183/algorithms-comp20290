@@ -84,6 +84,7 @@ public class SortTest {
             System.out.printf("AFTER %s SORT:\t\t", sortType.toUpperCase());
             sort.call();
             display(array);
+            if (!Sort.isSorted(array)) throw new AssertionError("Sort didn't work!");
         }
     }
 

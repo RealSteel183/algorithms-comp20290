@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
 public class Sort implements Callable<int[]> {
-    private static final int CUTOFF = 10; // for smaller sub-arrays in merge sort
+    private static final int CUTOFF = 10; // for smaller sub-arrays, use insertion sort
     private Method sort;
     private int[] arr;
 
@@ -53,9 +53,14 @@ public class Sort implements Callable<int[]> {
         }
     }
 
-    // insertion sort algorithm
+    // call insertion sort helper
     public static void insertion(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
+        insertionSort(arr, 0, arr.length - 1);
+    }
+
+    // insertion sort algorithm
+    private static void insertionSort(int[] arr, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++) {
             int key = arr[i];
             int j = i - 1;
             /*
@@ -131,6 +136,75 @@ public class Sort implements Callable<int[]> {
         System.arraycopy(right, 0, arr, left.length, right.length);
     }
 
+    // call helper function to implement quick sort
+    public static void quick(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+
+    // quick sort algorithm
+    private static void quickSort(int[] arr, int lo, int hi) {
+        if (lo < hi) {
+            // find the pivot
+            int pivot = partition(arr, lo, hi);
+
+            // Recursively sort elements before
+            // partition and after partition
+            quickSort(arr, lo, pivot - 1);
+            quickSort(arr, pivot + 1, hi);
+        }
+    }
+
+    // call helper enhanced quick sort
+    public static void quick_enhanced(int[] arr) {
+        shuffle(arr); // improves performance
+        enhancedQuickSort(arr, 0, arr.length - 1);
+    }
+
+    // enhanced quick sort algorithm
+    private static void enhancedQuickSort(int[] arr, int lo, int hi) {
+        if (hi - lo <= CUTOFF) {
+            insertionSort(arr, lo, hi);
+        } else if (lo < hi) {
+            int pivot_index = medianOf3(arr, lo, lo + (hi - lo) / 2, hi);
+
+            enhancedQuickSort(arr, lo, pivot_index - 1);
+            enhancedQuickSort(arr, pivot_index + 1, hi);
+        }
+    }
+
+    // median of 3 method - pivot selection
+    private static int medianOf3(int[] arr, int lo, int mid, int hi) {
+        // sort lo, mid, hi
+        if (arr[mid] < arr[lo]) {
+            swap(arr, mid, lo);
+        }
+        if (arr[hi] < arr[lo]) {
+            swap(arr, hi, lo);
+        }
+        if (arr[hi] < arr[mid]) {
+            swap(arr, hi, mid);
+        }
+
+        // place pivot at hi
+        swap(arr, mid, hi);
+        // partition array based on pivot
+        return partition(arr, lo, hi);
+    }
+
+    // partition the array so that pivot is in the right place
+    private static int partition(int[] arr, int lo, int hi) {
+        int pivot = arr[hi];
+        int i = (lo - 1);
+        for (int j = lo; j < hi; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, hi);
+        return i + 1;
+    }
+
     // swap elements at indices i and j or given array
     private static void swap(int[] a, int i, int j) {
         int temp = a[i];
@@ -141,7 +215,7 @@ public class Sort implements Callable<int[]> {
     // randomly shuffle array elements
     private static void shuffle(int[] a) {
         for (int i = 0; i < a.length; i++) {
-            int random_index = (int) (Math.random() * a.length);
+            int random_index = (int) (Math.random() * (i + 1));
             swap(a, i, random_index);
         }
     }

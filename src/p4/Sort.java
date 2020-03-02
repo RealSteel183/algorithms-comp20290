@@ -147,8 +147,6 @@ public class Sort implements Callable<int[]> {
             // find the pivot
             int pivot = partition(arr, lo, hi);
 
-            // Recursively sort elements before
-            // partition and after partition
             quickSort(arr, lo, pivot - 1);
             quickSort(arr, pivot + 1, hi);
         }
@@ -156,7 +154,6 @@ public class Sort implements Callable<int[]> {
 
     // call helper enhanced quick sort
     public static void quick_enhanced(int[] arr) {
-        shuffle(arr); // improves performance
         enhancedQuickSort(arr, 0, arr.length - 1);
     }
 

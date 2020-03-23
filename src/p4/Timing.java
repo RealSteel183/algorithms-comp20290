@@ -2,7 +2,7 @@ package p4;
 
 import java.util.concurrent.Callable;
 public class Timing {
-    public static long nanoTimePerformance(Callable<int[]> callable)
+    public static <E> long nanoTimePerformance(Callable<E[]> callable)
             throws Exception {
         long startTime = System.nanoTime();
         callable.call();

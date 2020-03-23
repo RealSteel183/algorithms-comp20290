@@ -1,12 +1,13 @@
 package p4;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class SortTest {
     static Scanner sc = new Scanner(System.in);
     private static int[] array_sizes = {10, 12, 100, 1000, 10000};
-    private static ArrayList<int[]> random_arrays = new ArrayList<>();
+    private static ArrayList<Integer[]> random_arrays = new ArrayList<>();
 
     // run tests for all 3 sorting algorithms with arrays of various sizes
     public static void main(String[] args) throws Exception {
@@ -46,11 +47,12 @@ public class SortTest {
     }
 
     // generate a randomly filled array of given size
-    public static int[] generateArray(int size) {
-        int[] arr = new int[size];
+    public static Integer[] generateArray(int size) {
+        Integer[] arr = new Integer[size];
+        Random rd = new Random();
         for (int i = 0; i < size; i++) {
-            // fill array with random elements between [0, size)
-            arr[i] = (int) (Math.random() * size);
+            // fill array with random integers
+            arr[i] = rd.nextInt();
         }
         return arr;
     }
@@ -59,13 +61,14 @@ public class SortTest {
     public static void timingAnalysis(String sortType) throws Exception {
         printLine();
         System.out.printf("-%s SORT-\n", sortType.toUpperCase());
-        for (int[] a : random_arrays) {
-            int[] array = new int[a.length];
+        for (Integer[] a : random_arrays) {
+            Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
-            Sort sort = new Sort(sortType, array);
-            System.out.printf("Time taken for array of size %d = %d nanosec\n", array.length,
+            Sort<Integer> sort = new Sort<>(sortType, array);
+            System.out.printf("Time taken for array of size %d = %d nanoseconds\n", array.length,
                     Timing.nanoTimePerformance(sort));
-            if (!Sort.isSorted(array)) throw new AssertionError("Sort didn't work!");
+            if (Sort.isNotSorted(array)) throw
+                    new AssertionError(String.format("%s didn't work!", sortType));
         }
     }
 
@@ -73,30 +76,22 @@ public class SortTest {
     public static void visualiseSort(String sortType) throws Exception {
         // copy only the first 2 small arrays of size 10 and 12
         // larger order array sizes are impractical to display in terminal
-        int[][] copy_arrays = {random_arrays.get(0), random_arrays.get(1)};
-        for (int[] a : copy_arrays) {
-            int[] array = new int[a.length];
+        Integer[][] copy_arrays = {random_arrays.get(0), random_arrays.get(1)};
+        for (Integer[] a : copy_arrays) {
+            Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
-            Sort sort = new Sort(sortType, array);
+            Sort<Integer> sort = new Sort<>(sortType, array);
 
             System.out.printf("\nORIGINAL ARRAY (size %d):\t", array.length);
-            display(array);
+            Sort.display(array);
             System.out.printf("AFTER %s SORT:\t\t", sortType.toUpperCase());
             sort.call();
-            display(array);
-            if (!Sort.isSorted(array)) throw new AssertionError("Sort didn't work!");
+            Sort.display(array);
+            if (Sort.isNotSorted(array)) throw
+                    new AssertionError(String.format("%s didn't work!", sortType));
         }
     }
 
-    // display the array elements
-    public static void display(int[] arr) {
-        StringBuilder ans = new StringBuilder("{ ");
-        for (int i = 0; i < arr.length - 1; i++) {
-            ans.append(arr[i]).append(", ");
-        }
-        ans.append(arr[arr.length - 1]).append(" }");
-        System.out.println(ans);
-    }
 
     // print a line of dashes
     public static void printLine() {

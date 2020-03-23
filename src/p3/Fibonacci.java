@@ -1,10 +1,10 @@
 package p3;
 
 /**
- * Two approaches, iterative and recursive, to find the nth 
+ * Two approaches, iterative and recursive, to find the nth
  * Fibonacci number.
- * 
- * @author Rajit Banerjee
+ *
+ * @author Rajit Banerjee, 18202817
  */
 public class Fibonacci {
     // Iterative calculation of the nth Fibonacci number
@@ -33,8 +33,10 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        // for n > 9, recursive fibonacci starts taking more time than the iterative one
-        // the difference becomes more pronounced once n takes vales > 30
+        /*
+        For n > 9, recursive fibonacci starts taking more time than the iterative one
+        the difference becomes more pronounced once n takes vales > 30
+        */
         int n = 30;
         final long t1 = System.currentTimeMillis();
         long iterativeFib = fibonacciIterative(n);
@@ -50,4 +52,5 @@ public class Fibonacci {
         System.out.println("Recursive answer = " + recursiveFib);
         System.out.println("Time taken for recursive Fibonacci (N = " + n + "): " + (t4 - t3));
     }
+
 }

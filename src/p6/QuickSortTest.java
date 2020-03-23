@@ -1,11 +1,17 @@
 package p6;
 
+/**
+ * Compare the performance of merge sort, quick sort, and enhanced quick sort.
+ *
+ * @author Rajit Banerjee
+ */
 public class QuickSortTest {
     private static int[] array_sizes = {5, 10, 100, 1000, 10000, 100000, 200000};
 
-    // run tests for 3 sorting algorithms with arrays of various sizes
+    // Run tests for various sorting algorithms
     public static void main(String[] args) throws Exception {
-        String[] sortTypes = {"merge", "quick", "quick_enhanced"};
+        String[] sortTypes = {"merge_sort", "quick_sort", "enhanced_quick_sort"};
         p4.SortTest.runTests(sortTypes, array_sizes);
     }
+
 }

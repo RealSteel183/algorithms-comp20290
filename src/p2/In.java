@@ -1,18 +1,11 @@
 package p2;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public final class In {
@@ -21,10 +14,18 @@ public final class In {
     private static final Pattern WHITESPACE_PATTERN;
     private static final Pattern EMPTY_PATTERN;
     private static final Pattern EVERYTHING_PATTERN;
+
+    static {
+        LOCALE = Locale.US;
+        WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
+        EMPTY_PATTERN = Pattern.compile("");
+        EVERYTHING_PATTERN = Pattern.compile("\\A");
+    }
+
     private Scanner scanner;
 
     public In() {
-        this.scanner = new Scanner(new BufferedInputStream(System.in), "UTF-8");
+        this.scanner = new Scanner(new BufferedInputStream(System.in), StandardCharsets.UTF_8);
         this.scanner.useLocale(LOCALE);
     }
 
@@ -34,7 +35,7 @@ public final class In {
         } else {
             try {
                 final InputStream var2 = var1.getInputStream();
-                this.scanner = new Scanner(new BufferedInputStream(var2), "UTF-8");
+                this.scanner = new Scanner(new BufferedInputStream(var2), StandardCharsets.UTF_8);
                 this.scanner.useLocale(LOCALE);
             } catch (final IOException var3) {
                 throw new IllegalArgumentException("Could not open " + var1, var3);
@@ -49,7 +50,7 @@ public final class In {
             try {
                 final URLConnection var2 = var1.openConnection();
                 final InputStream var3 = var2.getInputStream();
-                this.scanner = new Scanner(new BufferedInputStream(var3), "UTF-8");
+                this.scanner = new Scanner(new BufferedInputStream(var3), StandardCharsets.UTF_8);
                 this.scanner.useLocale(LOCALE);
             } catch (final IOException var4) {
                 throw new IllegalArgumentException("Could not open " + var1, var4);
@@ -63,7 +64,7 @@ public final class In {
         } else {
             try {
                 final FileInputStream var2 = new FileInputStream(var1);
-                this.scanner = new Scanner(new BufferedInputStream(var2), "UTF-8");
+                this.scanner = new Scanner(new BufferedInputStream(var2), StandardCharsets.UTF_8);
                 this.scanner.useLocale(LOCALE);
             } catch (final IOException var3) {
                 throw new IllegalArgumentException("Could not open " + var1, var3);
@@ -79,7 +80,7 @@ public final class In {
                 final File var2 = new File(var1);
                 if (var2.exists()) {
                     final FileInputStream var7 = new FileInputStream(var2);
-                    this.scanner = new Scanner(new BufferedInputStream(var7), "UTF-8");
+                    this.scanner = new Scanner(new BufferedInputStream(var7), StandardCharsets.UTF_8);
                     this.scanner.useLocale(LOCALE);
                 } else {
                     URL var3 = this.getClass().getResource(var1);
@@ -93,7 +94,7 @@ public final class In {
 
                     final URLConnection var4 = var3.openConnection();
                     final InputStream var5 = var4.getInputStream();
-                    this.scanner = new Scanner(new BufferedInputStream(var5), "UTF-8");
+                    this.scanner = new Scanner(new BufferedInputStream(var5), StandardCharsets.UTF_8);
                     this.scanner.useLocale(LOCALE);
                 }
             } catch (final IOException var6) {
@@ -108,6 +109,179 @@ public final class In {
         } else {
             this.scanner = var1;
         }
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static int[] readInts(final String var0) {
+        return (new In(var0)).readAllInts();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static double[] readDoubles(final String var0) {
+        return (new In(var0)).readAllDoubles();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static String[] readStrings(final String var0) {
+        return (new In(var0)).readAllStrings();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static int[] readInts() {
+        return (new In()).readAllInts();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static double[] readDoubles() {
+        return (new In()).readAllDoubles();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Deprecated
+    public static String[] readStrings() {
+        return (new In()).readAllStrings();
+    }
+
+    public static void main(final String[] var0) {
+        final String var2 = "https://introcs.cs.princeton.edu/java/stdlib/InTest.txt";
+        System.out.println("readAll() from URL " + var2);
+        System.out.println("---------------------------------------------------------------------------");
+
+        In var1;
+        try {
+            var1 = new In(var2);
+            System.out.println(var1.readAll());
+        } catch (final IllegalArgumentException var4) {
+            System.out.println(var4);
+        }
+
+        System.out.println();
+        System.out.println("readLine() from URL " + var2);
+        System.out.println("---------------------------------------------------------------------------");
+
+        String var3;
+        try {
+            var1 = new In(var2);
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readLine();
+                System.out.println(var3);
+            }
+        } catch (final IllegalArgumentException var11) {
+            System.out.println(var11);
+        }
+
+        System.out.println();
+        System.out.println("readString() from URL " + var2);
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In(var2);
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readString();
+                System.out.println(var3);
+            }
+        } catch (final IllegalArgumentException var10) {
+            System.out.println(var10);
+        }
+
+        System.out.println();
+        System.out.println("readLine() from current directory");
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In("./InTest.txt");
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readLine();
+                System.out.println(var3);
+            }
+        } catch (final IllegalArgumentException var9) {
+            System.out.println(var9);
+        }
+
+        System.out.println();
+        System.out.println("readLine() from relative path");
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In("../stdlib/InTest.txt");
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readLine();
+                System.out.println(var3);
+            }
+        } catch (final IllegalArgumentException var8) {
+            System.out.println(var8);
+        }
+
+        System.out.println();
+        System.out.println("readChar() from file");
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In("InTest.txt");
+
+            while (!var1.isEmpty()) {
+                final char var12 = var1.readChar();
+                System.out.print(var12);
+            }
+        } catch (final IllegalArgumentException var7) {
+            System.out.println(var7);
+        }
+
+        System.out.println();
+        System.out.println();
+        System.out.println("readLine() from absolute OS X / Linux path");
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readLine();
+                System.out.println(var3);
+            }
+        } catch (final IllegalArgumentException var6) {
+            System.out.println(var6);
+        }
+
+        System.out.println();
+        System.out.println("readLine() from absolute Windows path");
+        System.out.println("---------------------------------------------------------------------------");
+
+        try {
+            var1 = new In("G:\\www\\introcs\\stdlib\\InTest.txt");
+
+            while (!var1.isEmpty()) {
+                var3 = var1.readLine();
+                System.out.println(var3);
+            }
+
+            System.out.println();
+        } catch (final IllegalArgumentException var5) {
+            System.out.println(var5);
+        }
+
+        System.out.println();
     }
 
     public boolean exists() {
@@ -297,7 +471,7 @@ public final class In {
             var1.add(this.readLine());
         }
 
-        return (String[]) var1.toArray(new String[var1.size()]);
+        return var1.toArray(new String[var1.size()]);
     }
 
     public int[] readAllInts() {
@@ -335,173 +509,5 @@ public final class In {
 
     public void close() {
         this.scanner.close();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static int[] readInts(final String var0) {
-        return (new In(var0)).readAllInts();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static double[] readDoubles(final String var0) {
-        return (new In(var0)).readAllDoubles();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static String[] readStrings(final String var0) {
-        return (new In(var0)).readAllStrings();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static int[] readInts() {
-        return (new In()).readAllInts();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static double[] readDoubles() {
-        return (new In()).readAllDoubles();
-    }
-
-    /** @deprecated */
-    @Deprecated
-    public static String[] readStrings() {
-        return (new In()).readAllStrings();
-    }
-
-    public static void main(final String[] var0) {
-        final String var2 = "https://introcs.cs.princeton.edu/java/stdlib/InTest.txt";
-        System.out.println("readAll() from URL " + var2);
-        System.out.println("---------------------------------------------------------------------------");
-
-        In var1;
-        try {
-            var1 = new In(var2);
-            System.out.println(var1.readAll());
-        } catch (final IllegalArgumentException var4) {
-            System.out.println(var4);
-        }
-
-        System.out.println();
-        System.out.println("readLine() from URL " + var2);
-        System.out.println("---------------------------------------------------------------------------");
-
-        String var3;
-        try {
-            var1 = new In(var2);
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readLine();
-                System.out.println(var3);
-            }
-        } catch (final IllegalArgumentException var11) {
-            System.out.println(var11);
-        }
-
-        System.out.println();
-        System.out.println("readString() from URL " + var2);
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In(var2);
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readString();
-                System.out.println(var3);
-            }
-        } catch (final IllegalArgumentException var10) {
-            System.out.println(var10);
-        }
-
-        System.out.println();
-        System.out.println("readLine() from current directory");
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In("./InTest.txt");
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readLine();
-                System.out.println(var3);
-            }
-        } catch (final IllegalArgumentException var9) {
-            System.out.println(var9);
-        }
-
-        System.out.println();
-        System.out.println("readLine() from relative path");
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In("../stdlib/InTest.txt");
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readLine();
-                System.out.println(var3);
-            }
-        } catch (final IllegalArgumentException var8) {
-            System.out.println(var8);
-        }
-
-        System.out.println();
-        System.out.println("readChar() from file");
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In("InTest.txt");
-
-            while (!var1.isEmpty()) {
-                final char var12 = var1.readChar();
-                System.out.print(var12);
-            }
-        } catch (final IllegalArgumentException var7) {
-            System.out.println(var7);
-        }
-
-        System.out.println();
-        System.out.println();
-        System.out.println("readLine() from absolute OS X / Linux path");
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In("/n/fs/introcs/www/java/stdlib/InTest.txt");
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readLine();
-                System.out.println(var3);
-            }
-        } catch (final IllegalArgumentException var6) {
-            System.out.println(var6);
-        }
-
-        System.out.println();
-        System.out.println("readLine() from absolute Windows path");
-        System.out.println("---------------------------------------------------------------------------");
-
-        try {
-            var1 = new In("G:\\www\\introcs\\stdlib\\InTest.txt");
-
-            while (!var1.isEmpty()) {
-                var3 = var1.readLine();
-                System.out.println(var3);
-            }
-
-            System.out.println();
-        } catch (final IllegalArgumentException var5) {
-            System.out.println(var5);
-        }
-
-        System.out.println();
-    }
-
-    static {
-        LOCALE = Locale.US;
-        WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
-        EMPTY_PATTERN = Pattern.compile("");
-        EVERYTHING_PATTERN = Pattern.compile("\\A");
     }
 }

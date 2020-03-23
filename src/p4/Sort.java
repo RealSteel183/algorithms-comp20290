@@ -4,6 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;
 
+/**
+ * Callable class to implement different types of sorts on an array
+ * containing Comparable elements.
+ *
+ * @param <E> generic type of items to be sorted
+ * @author Rajit Banerjee
+ */
 public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     private static final int CUTOFF = 10; // for smaller sub-arrays, use insertion sort
     private Method sort;
@@ -15,15 +22,13 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         this.arr = arr;
     }
 
-    @Override
-    public E[] call() throws IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
-        sort.invoke(null, (Object) arr);
-        return arr;
-    }
-
-    // selection sort algorithm
-    public static <E extends Comparable<E>> void selection(E[] arr) {
+    /**
+     * Apply SelectionSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
+    public static <E extends Comparable<E>> void selection_sort(E[] arr) {
         int min_index;
         for (int i = 0; i < arr.length - 1; i++) {
             min_index = i;
@@ -37,7 +42,7 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     }
 
     // stupid sort - BogoSort algorithm
-    public static <E extends Comparable<E>> void bogo(E[] arr) {
+    public static <E extends Comparable<E>> void bogo_sort(E[] arr) {
         while (isNotSorted(arr)) {
             shuffle(arr);
         }
@@ -62,12 +67,12 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     }
 
     // call insertion sort helper
-    public static <E extends Comparable<E>> void insertion(E[] arr) {
-        insertionSort(arr, 0, arr.length - 1);
+    public static <E extends Comparable<E>> void insertion_sort(E[] arr) {
+        insertion_sort(arr, 0, arr.length - 1);
     }
 
     // insertion sort algorithm
-    private static <E extends Comparable<E>> void insertionSort(E[] arr, int lo, int hi) {
+    private static <E extends Comparable<E>> void insertion_sort(E[] arr, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++) {
             E key = arr[i];
             int j = i - 1;
@@ -82,47 +87,21 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         }
     }
 
-    // merge sort algorithm
-    public static <E extends Comparable<E>> void merge(E[] arr) {
+    // Merge sort algorithm
+    public static <E extends Comparable<E>> void merge_sort(E[] arr) {
         if (arr.length < 2) {
             return;
         }
         int mid = arr.length / 2;
         E[] leftHalf = half(arr, 0, mid - 1);
         E[] rightHalf = half(arr, mid, arr.length - 1);
-        merge(leftHalf);
-        merge(rightHalf);
-        mergeHalves(arr, leftHalf, rightHalf);
+        merge_sort(leftHalf);
+        merge_sort(rightHalf);
+        merge(arr, leftHalf, rightHalf);
     }
 
-    // enhanced merge sort algorithm
-    public static <E extends Comparable<E>> void fast_merge(E[] arr) {
-        if (arr.length <= CUTOFF) {
-            insertion(arr);
-        } else {
-            int mid = arr.length / 2;
-            E[] leftHalf = half(arr, 0, mid - 1);
-            E[] rightHalf = half(arr, mid, arr.length - 1);
-            fast_merge(leftHalf);
-            fast_merge(rightHalf);
-            if (leftHalf[leftHalf.length - 1].compareTo(rightHalf[0]) > 0) {
-                mergeHalves(arr, leftHalf, rightHalf);
-            } else {
-                joinHalves(arr, leftHalf, rightHalf);
-            }
-        }
-    }
-
-    // method to generate the left/right half of an array
-    @SuppressWarnings("unchecked")
-    private static <E extends Comparable<E>> E[] half(E[] a, int start, int end) {
-        E[] ans = (E[]) new Comparable[end - start + 1];
-        System.arraycopy(a, start, ans, 0, ans.length);
-        return ans;
-    }
-
-    // merge two sorted arrays together
-    private static <E extends Comparable<E>> void mergeHalves(E[] arr, E[] left, E[] right) {
+    // Merge two sorted arrays together
+    private static <E extends Comparable<E>> void merge(E[] arr, E[] left, E[] right) {
         int x = 0, y = 0, index = 0;
         while (x < left.length && y < right.length) {
             if (left[x].compareTo(right[y]) <= 0) {
@@ -139,49 +118,86 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         }
     }
 
-    // join two halves of an array
+    // Generate a portion (usually half) of an array
+    @SuppressWarnings("unchecked")
+    private static <E extends Comparable<E>> E[] half(E[] a, int start, int end) {
+        E[] ans = (E[]) new Comparable[end - start + 1];
+        System.arraycopy(a, start, ans, 0, ans.length);
+        return ans;
+    }
+
+    // Enhanced merge sort algorithm
+    public static <E extends Comparable<E>> void enhanced_merge_sort(E[] arr) {
+        if (arr.length <= CUTOFF) {
+            insertion_sort(arr);
+        } else {
+            int mid = arr.length / 2;
+            E[] leftHalf = half(arr, 0, mid - 1);
+            E[] rightHalf = half(arr, mid, arr.length - 1);
+            enhanced_merge_sort(leftHalf);
+            enhanced_merge_sort(rightHalf);
+            if (leftHalf[leftHalf.length - 1].compareTo(rightHalf[0]) > 0) {
+                merge(arr, leftHalf, rightHalf);
+            } else {
+                joinHalves(arr, leftHalf, rightHalf);
+            }
+        }
+    }
+
+    // Join two halves of an array
     private static <E extends Comparable<E>> void joinHalves(E[] arr, E[] left, E[] right) {
         System.arraycopy(left, 0, arr, 0, left.length);
         System.arraycopy(right, 0, arr, left.length, right.length);
     }
 
-    // call helper function to implement quick sort
-    public static <E extends Comparable<E>> void quick(E[] arr) {
-        quickSort(arr, 0, arr.length - 1);
+
+    /**
+     * Apply QuickSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
+    public static <E extends Comparable<E>> void quick_sort(E[] arr) {
+        quick_sort(arr, 0, arr.length - 1);
     }
 
-    // quick sort algorithm
-    private static <E extends Comparable<E>> void quickSort(E[] arr, int lo, int hi) {
+    // Quick sort algorithm
+    private static <E extends Comparable<E>> void quick_sort(E[] arr, int lo, int hi) {
         if (lo < hi) {
-            // find the pivot
+            // Find the pivot
             int pivot = partition(arr, lo, hi);
 
-            quickSort(arr, lo, pivot - 1);
-            quickSort(arr, pivot + 1, hi);
+            quick_sort(arr, lo, pivot - 1);
+            quick_sort(arr, pivot + 1, hi);
         }
     }
 
-    // call helper enhanced quick sort
-    public static <E extends Comparable<E>> void quick_enhanced(E[] arr) {
-        shuffle(arr); // improves performance?
-        enhancedQuickSort(arr, 0, arr.length - 1);
+    /**
+     * Apply Enhanced QuickSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array elements.
+     */
+    public static <E extends Comparable<E>> void enhanced_quick_sort(E[] arr) {
+        //shuffle(arr); // improves performance?
+        enhanced_quick_sort(arr, 0, arr.length - 1);
     }
 
-    // enhanced quick sort algorithm
-    private static <E extends Comparable<E>> void enhancedQuickSort(E[] arr, int lo, int hi) {
+    // Enhanced quick sort algorithm
+    private static <E extends Comparable<E>> void enhanced_quick_sort(E[] arr, int lo, int hi) {
         if (hi - lo <= CUTOFF) {
-            insertionSort(arr, lo, hi);
+            insertion_sort(arr, lo, hi);
         } else if (lo < hi) {
             int pivot_index = medianOf3(arr, lo, lo + (hi - lo) / 2, hi);
 
-            enhancedQuickSort(arr, lo, pivot_index - 1);
-            enhancedQuickSort(arr, pivot_index + 1, hi);
+            enhanced_quick_sort(arr, lo, pivot_index - 1);
+            enhanced_quick_sort(arr, pivot_index + 1, hi);
         }
     }
 
-    // median of 3 method - pivot selection
+    // Median of 3 method - pivot selection
     private static <E extends Comparable<E>> int medianOf3(E[] arr, int lo, int mid, int hi) {
-        // sort lo, mid, hi
+        // Sort lo, mid, hi
         if (arr[mid].compareTo(arr[lo]) < 0) {
             swap(arr, mid, lo);
         }
@@ -192,13 +208,13 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
             swap(arr, hi, mid);
         }
 
-        // place pivot at hi
+        // Place pivot at hi index
         swap(arr, mid, hi);
-        // partition array based on pivot
+        // Partition array based on pivot
         return partition(arr, lo, hi);
     }
 
-    // partition the array so that pivot is in the right place
+    // Partition the array so that pivot is in the right place
     private static <E extends Comparable<E>> int partition(E[] arr, int lo, int hi) {
         E pivot = arr[hi];
         int i = (lo - 1);
@@ -212,20 +228,41 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         return i + 1;
     }
 
-    // swap elements at indices i and j or given array
+    // Swap elements at indices i and j or given array
     private static <E extends Comparable<E>> void swap(E[] a, int i, int j) {
         E temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
 
-    // display the array elements
-    public static <E extends Comparable<E>> void display(E[] arr) {
-        StringBuilder ans = new StringBuilder("{ ");
+    /**
+     * Display a given array on the command line.
+     *
+     * @param arr array to be displayed
+     * @param <E> generic type of array items
+     */
+    public static <E extends Comparable<E>> String display(E[] arr) {
+        StringBuilder ans = new StringBuilder("[");
         for (int i = 0; i < arr.length - 1; i++) {
             ans.append(arr[i]).append(", ");
         }
-        ans.append(arr[arr.length - 1]).append(" }");
-        System.out.println(ans);
+        ans.append(arr[arr.length - 1]).append("]");
+        return ans.toString();
     }
+
+    /**
+     * Invokes a particular type of sort in the class.
+     *
+     * @return the sorted array
+     * @throws IllegalAccessException    may be caused due to issue in reflection
+     * @throws IllegalArgumentException  may be caused due to issue in reflection
+     * @throws InvocationTargetException may be caused due to issue in reflection
+     */
+    @Override
+    public E[] call() throws IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException {
+        sort.invoke(null, (Object) arr);
+        return arr;
+    }
+
 }

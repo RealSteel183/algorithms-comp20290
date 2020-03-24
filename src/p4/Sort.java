@@ -12,12 +12,19 @@ import java.util.concurrent.Callable;
  * @author Rajit Banerjee
  */
 public class Sort<E extends Comparable<E>> implements Callable<E[]> {
-    private static final int CUTOFF = 10; // for smaller sub-arrays, use insertion sort
+    private static final int CUTOFF = 15; // for smaller sub-arrays, use insertion sort
     private Method sort;
     private E[] arr;
 
-    public Sort(String sortType, E[] arr)
-            throws NoSuchMethodException, SecurityException {
+    /**
+     * Initialise new sort, use reflection to get the declared method
+     * for the required sort type.
+     *
+     * @param sortType name of sort method to be called
+     * @param arr      array to be sorted
+     * @throws NoSuchMethodException if method with required name doesn't exist
+     */
+    public Sort(String sortType, E[] arr) throws NoSuchMethodException {
         sort = Sort.class.getMethod(sortType, Comparable[].class);
         this.arr = arr;
     }
@@ -41,14 +48,26 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         }
     }
 
-    // stupid sort - BogoSort algorithm
+    /**
+     * Apply BogoSort (silly sort) on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
     public static <E extends Comparable<E>> void bogo_sort(E[] arr) {
         while (isNotSorted(arr)) {
             shuffle(arr);
         }
     }
 
-    // Check if given array is not sorted
+
+    /**
+     * Check if given array is not sorted yet.
+     *
+     * @param a   array to be checked
+     * @param <E> generic type of array items
+     * @return {@code true} if array is not sorted
+     */
     public static <E extends Comparable<E>> boolean isNotSorted(E[] a) {
         for (int i = 0; i < a.length - 1; i++) {
             if (a[i] == null || a[i].compareTo(a[i + 1]) > 0) {
@@ -58,98 +77,110 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         return false;
     }
 
-    // randomly shuffle array elements
+    // Randomly shuffle array elements
     private static <E extends Comparable<E>> void shuffle(E[] a) {
         for (int i = 0; i < a.length; i++) {
             int random_index = (int) (Math.random() * (i + 1));
-            swap(a, i, random_index);
+            swap(a, random_index, i);
         }
     }
 
-    // call insertion sort helper
+    /**
+     * Apply InsertionSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
     public static <E extends Comparable<E>> void insertion_sort(E[] arr) {
         insertion_sort(arr, 0, arr.length - 1);
     }
 
-    // insertion sort algorithm
+    // Insertion sort algorithm
     private static <E extends Comparable<E>> void insertion_sort(E[] arr, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++) {
             E key = arr[i];
             int j = i - 1;
             /*
-             * shift elements [0 to i-1] to the right as long as
-             * they are greater than key element
+             Shift elements to the right as long as
+             they are greater than key element
              */
-            while (j >= 0 && arr[j].compareTo(key) > 0) {
+            while (j >= lo && arr[j].compareTo(key) > 0) {
                 arr[j + 1] = arr[j--];
             }
             arr[j + 1] = key;
         }
     }
 
-    // Merge sort algorithm
+    /**
+     * Apply MergeSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
     public static <E extends Comparable<E>> void merge_sort(E[] arr) {
-        if (arr.length < 2) {
-            return;
+        merge_sort(arr, 0, arr.length - 1);
+    }
+
+    // Merge sort algorithm
+    private static <E extends Comparable<E>> void merge_sort(E[] arr, int lo, int hi) {
+        if (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            merge_sort(arr, lo, mid);
+            merge_sort(arr, mid + 1, hi);
+            merge(arr, lo, mid, hi);
         }
-        int mid = arr.length / 2;
-        E[] leftHalf = half(arr, 0, mid - 1);
-        E[] rightHalf = half(arr, mid, arr.length - 1);
-        merge_sort(leftHalf);
-        merge_sort(rightHalf);
-        merge(arr, leftHalf, rightHalf);
     }
 
     // Merge two sorted arrays together
-    private static <E extends Comparable<E>> void merge(E[] arr, E[] left, E[] right) {
-        int x = 0, y = 0, index = 0;
+    @SuppressWarnings("unchecked")
+    private static <E extends Comparable<E>> void merge(E[] arr, int lo, int mid, int hi) {
+        E[] left = (E[]) new Comparable[mid - lo + 1];
+        E[] right = (E[]) new Comparable[hi - mid];
+        System.arraycopy(arr, lo, left, 0, mid - lo + 1);
+        System.arraycopy(arr, mid + 1, right, 0, hi - mid);
+
+        int x = 0, y = 0, index = lo;
         while (x < left.length && y < right.length) {
+            // Add smaller element in left/right to merged array
             if (left[x].compareTo(right[y]) <= 0) {
                 arr[index++] = left[x++];
             } else {
                 arr[index++] = right[y++];
             }
         }
+        // Add remaining elements of left half to merged array
         while (x < left.length) {
             arr[index++] = left[x++];
         }
+        // Add remaining elements of right half to merged array
         while (y < right.length) {
             arr[index++] = right[y++];
         }
     }
 
-    // Generate a portion (usually half) of an array
-    @SuppressWarnings("unchecked")
-    private static <E extends Comparable<E>> E[] half(E[] a, int start, int end) {
-        E[] ans = (E[]) new Comparable[end - start + 1];
-        System.arraycopy(a, start, ans, 0, ans.length);
-        return ans;
+    /**
+     * Apply Enhanced MergeSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
+    public static <E extends Comparable<E>> void enhanced_merge_sort(E[] arr) {
+        enhanced_merge_sort(arr, 0, arr.length - 1);
     }
 
     // Enhanced merge sort algorithm
-    public static <E extends Comparable<E>> void enhanced_merge_sort(E[] arr) {
-        if (arr.length <= CUTOFF) {
-            insertion_sort(arr);
-        } else {
-            int mid = arr.length / 2;
-            E[] leftHalf = half(arr, 0, mid - 1);
-            E[] rightHalf = half(arr, mid, arr.length - 1);
-            enhanced_merge_sort(leftHalf);
-            enhanced_merge_sort(rightHalf);
-            if (leftHalf[leftHalf.length - 1].compareTo(rightHalf[0]) > 0) {
-                merge(arr, leftHalf, rightHalf);
-            } else {
-                joinHalves(arr, leftHalf, rightHalf);
+    private static <E extends Comparable<E>> void enhanced_merge_sort(E[] arr, int lo, int hi) {
+        if (hi - lo <= CUTOFF) {
+            insertion_sort(arr, lo, hi);
+        } else if (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            enhanced_merge_sort(arr, lo, mid);
+            enhanced_merge_sort(arr, mid + 1, hi);
+            if (arr[mid].compareTo(arr[mid + 1]) > 0) {
+                merge(arr, lo, mid, hi);
             }
         }
     }
-
-    // Join two halves of an array
-    private static <E extends Comparable<E>> void joinHalves(E[] arr, E[] left, E[] right) {
-        System.arraycopy(left, 0, arr, 0, left.length);
-        System.arraycopy(right, 0, arr, left.length, right.length);
-    }
-
 
     /**
      * Apply QuickSort on the given array.

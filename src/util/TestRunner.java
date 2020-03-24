@@ -1,4 +1,6 @@
-package p4;
+package util;
+
+import p4.Sort;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -6,20 +8,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Compare the performance of selection sort, insertion sort, and bogo sort.
+ * Test framework to compare performance of various types of sorts
+ * defined in the Sort class.
  *
  * @author Rajit Banerjee
  */
-public class SortTest {
+public class TestRunner {
     static Scanner sc = new Scanner(System.in);
-    private static int[] array_sizes = {10, 12, 100, 1000, 10000};
     private static ArrayList<Integer[]> random_arrays = new ArrayList<>();
-
-    // Run tests for all 3 sorting algorithms with arrays of various sizes
-    public static void main(String[] args) throws Exception {
-        String[] sortTypes = {"selection_sort", "insertion_sort", "bogo_sort"};
-        runTests(sortTypes, array_sizes);
-    }
 
     /**
      * Display user options and perform tasks according to choice
@@ -28,7 +24,7 @@ public class SortTest {
      * @param array_sizes different array sizes to perform tests on
      * @throws Exception if any unusual event takes place while running tests
      */
-    public static void runTests(String[] sortTypes, int[] array_sizes) throws Exception {
+    public static void run(String[] sortTypes, int[] array_sizes) throws Exception {
         generateRandomArrays(array_sizes);
         promptUser();
         int op = 0;

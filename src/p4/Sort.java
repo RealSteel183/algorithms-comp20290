@@ -170,7 +170,7 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
 
     // Enhanced merge sort algorithm
     private static <E extends Comparable<E>> void enhanced_merge_sort(E[] arr, int lo, int hi) {
-        if (hi - lo <= CUTOFF) {
+        if (lo + CUTOFF > hi) {
             insertion_sort(arr, lo, hi);
         } else if (lo < hi) {
             int mid = lo + (hi - lo) / 2;
@@ -195,12 +195,24 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     // Quick sort algorithm
     private static <E extends Comparable<E>> void quick_sort(E[] arr, int lo, int hi) {
         if (lo < hi) {
-            // Find the pivot
             int pivot = partition(arr, lo, hi);
-
             quick_sort(arr, lo, pivot - 1);
             quick_sort(arr, pivot + 1, hi);
         }
+    }
+
+    // Partition the array so that pivot is in the right place
+    private static <E extends Comparable<E>> int partition(E[] arr, int lo, int hi) {
+        E pivot = arr[hi];
+        int i = (lo - 1);
+        for (int j = lo; j < hi; j++) {
+            if (arr[j].compareTo(pivot) < 0) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, hi);
+        return i + 1;
     }
 
     /**
@@ -210,17 +222,16 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
      * @param <E> generic type of array elements.
      */
     public static <E extends Comparable<E>> void enhanced_quick_sort(E[] arr) {
-        //shuffle(arr); // improves performance?
+        shuffle(arr); // improves performance
         enhanced_quick_sort(arr, 0, arr.length - 1);
     }
 
     // Enhanced quick sort algorithm
     private static <E extends Comparable<E>> void enhanced_quick_sort(E[] arr, int lo, int hi) {
-        if (hi - lo <= CUTOFF) {
+        if (lo + CUTOFF > hi) {
             insertion_sort(arr, lo, hi);
         } else if (lo < hi) {
             int pivot_index = medianOf3(arr, lo, lo + (hi - lo) / 2, hi);
-
             enhanced_quick_sort(arr, lo, pivot_index - 1);
             enhanced_quick_sort(arr, pivot_index + 1, hi);
         }
@@ -238,25 +249,10 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         if (arr[hi].compareTo(arr[mid]) < 0) {
             swap(arr, hi, mid);
         }
-
-        // Place pivot at hi index
-        swap(arr, mid, hi);
+        // Place pivot at hi - 1 index
+        swap(arr, mid, hi - 1);
         // Partition array based on pivot
-        return partition(arr, lo, hi);
-    }
-
-    // Partition the array so that pivot is in the right place
-    private static <E extends Comparable<E>> int partition(E[] arr, int lo, int hi) {
-        E pivot = arr[hi];
-        int i = (lo - 1);
-        for (int j = lo; j < hi; j++) {
-            if (arr[j].compareTo(pivot) < 0) {
-                i++;
-                swap(arr, i, j);
-            }
-        }
-        swap(arr, i + 1, hi);
-        return i + 1;
+        return partition(arr, lo, hi - 1);
     }
 
     // Swap elements at indices i and j or given array

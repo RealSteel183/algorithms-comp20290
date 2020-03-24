@@ -8,7 +8,7 @@ import util.TestRunner;
  * @author Rajit Banerjee
  */
 public class QuickSortTest {
-    private static int[] array_sizes = {5, 10, 100, 1000, 10000, 100000, 200000};
+    private static int[] array_sizes = {10, 15, 100, 1000, 10000, 100000};
 
     // Run tests for various sorting algorithms
     public static void main(String[] args) throws Exception {

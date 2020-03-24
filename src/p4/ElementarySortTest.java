@@ -15,4 +15,5 @@ public class ElementarySortTest {
         String[] sortTypes = {"selection_sort", "insertion_sort", "bogo_sort"};
         TestRunner.run(sortTypes, array_sizes);
     }
+
 }

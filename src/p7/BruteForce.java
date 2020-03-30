@@ -9,8 +9,8 @@ public class BruteForce {
      * @return starting of pattern in text if found, else -1
      */
     public static int search(String pattern, String text) {
-        int textLen = text.length();
         int patLen = pattern.length();
+        int textLen = text.length();
         for (int i = 0; i <= textLen - patLen; i++) {
             int j = -1;
             while (++j < patLen) {

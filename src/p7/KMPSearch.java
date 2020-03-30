@@ -9,41 +9,36 @@ public class KMPSearch {
         if (patLen == 0) {
             return 0;
         }
-        int[] lps = new int[patLen]; // Longest prefix suffix values
-        computeLPSArray(pattern, patLen, lps); // Pattern pre-processing
-
-        int i = 0, j = 0;
-        while (i < textLen) {
+        int[] lps = computeLPSArray(pattern, patLen); // Pattern pre-processing
+        int j = 0; // Pattern index
+        for (int i = 0; i < textLen; i++) {
             if (text.charAt(i) == pattern.charAt(j)) {
                 if (j == patLen - 1) {
-                    return i - patLen + 1;
+                    return i - j;
                 }
-                i++;
                 j++;
-            } else if (j > 0) {
+            } else if (j != 0) {
                 j = lps[j - 1];
-            } else {
-                i++;
+                i--;
             }
         }
         return -1;
     }
 
-    private static void computeLPSArray(String pattern, int patLen, int[] lps) {
-        // Length of the previous longest prefix suffix
-        int len = 0, i = 1;
-        // Calculate lps[i] for i = 1 to M-1
-        while (i < patLen) {
+    // Stores the length of longest pattern prefix that is a substring [1..index] suffix
+    private static int[] computeLPSArray(String pattern, int patLen) {
+        int[] lps = new int[patLen];
+        int len = 0; // Length of the previous longest prefix suffix
+        for (int i = 1; i < patLen; i++) {
             if (pattern.charAt(i) == pattern.charAt(len)) {
-                lps[i++] = ++len;
+                lps[i] = ++len;
             } else if (len != 0) {
                 len = lps[len - 1];
-            } else {
-                lps[i] = len;
-                i++;
+                i--;
             }
         }
         System.out.println(Arrays.toString(lps));
+        return lps;
     }
 
     // Driver program to test above function

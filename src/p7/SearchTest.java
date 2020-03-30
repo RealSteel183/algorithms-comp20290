@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SearchTest {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("src\\p7\\input.txt"));
+        Scanner sc = new Scanner(new File("src/p7/input.txt"));
         System.out.println("TEXT SIZE\tBRUTE FORCE SEARCH\tKMP SEARCH");
         while (sc.hasNext()) {
             String pattern = sc.next();

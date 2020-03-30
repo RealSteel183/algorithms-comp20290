@@ -3,7 +3,7 @@ package p3;
 /**
  * Recursive solution to the Towers of Hanoi problem.
  *
- * @author Rajit Banerjee, 18202817
+ * @author Rajit Banerjee
  */
 public class Hanoi {
     /**

@@ -4,7 +4,7 @@ package p3;
  * Two approaches, iterative and recursive, to find the nth
  * Fibonacci number.
  *
- * @author Rajit Banerjee, 18202817
+ * @author Rajit Banerjee
  */
 public class Fibonacci {
     // Iterative calculation of the nth Fibonacci number

@@ -60,7 +60,6 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         }
     }
 
-
     /**
      * Check if given array is not sorted yet.
      *
@@ -222,7 +221,7 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
      * @param <E> generic type of array elements.
      */
     public static <E extends Comparable<E>> void enhanced_quick_sort(E[] arr) {
-        shuffle(arr); // improves performance
+        shuffle(arr); // Improves performance
         enhanced_quick_sort(arr, 0, arr.length - 1);
     }
 
@@ -281,13 +280,11 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
      * Invokes a particular type of sort in the class.
      *
      * @return the sorted array
-     * @throws IllegalAccessException    may be caused due to issue in reflection
-     * @throws IllegalArgumentException  may be caused due to issue in reflection
-     * @throws InvocationTargetException may be caused due to issue in reflection
+     * @throws InvocationTargetException if method to be invoked throws underlying exception
+     * @throws IllegalAccessException    if method to be invoked is not defined
      */
     @Override
-    public E[] call() throws IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
+    public E[] call() throws InvocationTargetException, IllegalAccessException {
         sort.invoke(null, (Object) arr);
         return arr;
     }

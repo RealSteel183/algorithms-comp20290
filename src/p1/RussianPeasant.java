@@ -24,21 +24,18 @@ public class RussianPeasant {
 
     }
 
+    // Implement the Russian Peasant's algorithm
     private static int RussianMultiply(int m, int n) {
         int res = 0;
-        // finding the smaller number that will be halved
-        int a = Math.min(m, n);
-        // finding the larger number that will be doubled
-        int b = Math.max(m, n);
-        while (a != 0) {
+        int smaller = Math.min(m, n);
+        int larger = Math.max(m, n);
+        while (smaller != 0) {
             // if the smaller number is is odd, add the larger number to result
-            if (a % 2 == 1) {
-                res += b;
+            if (smaller % 2 == 1) {
+                res += larger;
             }
-            // halve the smaller number
-            a /= 2;
-            // double the larger number
-            b *= 2;
+            smaller /= 2;
+            larger *= 2;
         }
         return res;
     }

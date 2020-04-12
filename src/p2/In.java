@@ -22,7 +22,7 @@ public final class In {
         EVERYTHING_PATTERN = Pattern.compile("\\A");
     }
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
     public In() {
         this.scanner = new Scanner(new BufferedInputStream(System.in), StandardCharsets.UTF_8);
@@ -81,7 +81,6 @@ public final class In {
                 if (var2.exists()) {
                     final FileInputStream var7 = new FileInputStream(var2);
                     this.scanner = new Scanner(new BufferedInputStream(var7), StandardCharsets.UTF_8);
-                    this.scanner.useLocale(LOCALE);
                 } else {
                     URL var3 = this.getClass().getResource(var1);
                     if (var3 == null) {
@@ -95,8 +94,8 @@ public final class In {
                     final URLConnection var4 = var3.openConnection();
                     final InputStream var5 = var4.getInputStream();
                     this.scanner = new Scanner(new BufferedInputStream(var5), StandardCharsets.UTF_8);
-                    this.scanner.useLocale(LOCALE);
                 }
+                this.scanner.useLocale(LOCALE);
             } catch (final IOException var6) {
                 throw new IllegalArgumentException("Could not open " + var1, var6);
             }
@@ -169,7 +168,7 @@ public final class In {
             var1 = new In(var2);
             System.out.println(var1.readAll());
         } catch (final IllegalArgumentException var4) {
-            System.out.println(var4);
+            var4.printStackTrace();
         }
 
         System.out.println();
@@ -185,7 +184,7 @@ public final class In {
                 System.out.println(var3);
             }
         } catch (final IllegalArgumentException var11) {
-            System.out.println(var11);
+            var11.printStackTrace();
         }
 
         System.out.println();
@@ -200,7 +199,7 @@ public final class In {
                 System.out.println(var3);
             }
         } catch (final IllegalArgumentException var10) {
-            System.out.println(var10);
+            var10.printStackTrace();
         }
 
         System.out.println();
@@ -215,7 +214,7 @@ public final class In {
                 System.out.println(var3);
             }
         } catch (final IllegalArgumentException var9) {
-            System.out.println(var9);
+            var9.printStackTrace();
         }
 
         System.out.println();
@@ -230,7 +229,7 @@ public final class In {
                 System.out.println(var3);
             }
         } catch (final IllegalArgumentException var8) {
-            System.out.println(var8);
+            var8.printStackTrace();
         }
 
         System.out.println();
@@ -245,7 +244,7 @@ public final class In {
                 System.out.print(var12);
             }
         } catch (final IllegalArgumentException var7) {
-            System.out.println(var7);
+            var7.printStackTrace();
         }
 
         System.out.println();
@@ -261,7 +260,7 @@ public final class In {
                 System.out.println(var3);
             }
         } catch (final IllegalArgumentException var6) {
-            System.out.println(var6);
+            var6.printStackTrace();
         }
 
         System.out.println();
@@ -278,7 +277,7 @@ public final class In {
 
             System.out.println();
         } catch (final IllegalArgumentException var5) {
-            System.out.println(var5);
+            var5.printStackTrace();
         }
 
         System.out.println();
@@ -358,7 +357,7 @@ public final class In {
                     "attempts to read an 'int' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read an 'int' value from the input stream, but no more tokens are available");
+                    "attempts to read an 'int' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -371,7 +370,7 @@ public final class In {
                     "attempts to read a 'double' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read a 'double' value from the input stream, but no more tokens are available");
+                    "attempts to read a 'double' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -384,7 +383,7 @@ public final class In {
                     "attempts to read a 'float' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read a 'float' value from the input stream, but no more tokens are available");
+                    "attempts to read a 'float' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -397,7 +396,7 @@ public final class In {
                     "attempts to read a 'long' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read a 'long' value from the input stream, but no more tokens are available");
+                    "attempts to read a 'long' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -410,7 +409,7 @@ public final class In {
                     "attempts to read a 'short' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read a 'short' value from the input stream, but no more tokens are available");
+                    "attempts to read a 'short' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -423,7 +422,7 @@ public final class In {
                     "attempts to read a 'byte' value from the input stream, but the next token is \"" + var2 + "\"");
         } catch (final NoSuchElementException var4) {
             throw new NoSuchElementException(
-                    "attemps to read a 'byte' value from the input stream, but no more tokens are available");
+                    "attempts to read a 'byte' value from the input stream, but no more tokens are available");
         }
     }
 
@@ -454,9 +453,7 @@ public final class In {
         if (var1.length != 0 && var1[0].length() <= 0) {
             final String[] var2 = new String[var1.length - 1];
 
-            for (int var3 = 0; var3 < var1.length - 1; ++var3) {
-                var2[var3] = var1[var3 + 1];
-            }
+            System.arraycopy(var1, 1, var2, 0, var1.length - 1);
 
             return var2;
         } else {
@@ -471,7 +468,7 @@ public final class In {
             var1.add(this.readLine());
         }
 
-        return var1.toArray(new String[var1.size()]);
+        return var1.toArray(new String[0]);
     }
 
     public int[] readAllInts() {

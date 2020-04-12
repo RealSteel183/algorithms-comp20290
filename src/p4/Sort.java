@@ -13,8 +13,8 @@ import java.util.concurrent.Callable;
  */
 public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     private static final int CUTOFF = 15; // for smaller sub-arrays, use insertion sort
-    private Method sort;
-    private E[] arr;
+    private final Method sort;
+    private final E[] arr;
 
     /**
      * Initialise new sort, use reflection to get the declared method

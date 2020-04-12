@@ -34,8 +34,8 @@ public class Fibonacci {
 
     public static void main(String[] args) {
         /*
-        For n > 9, recursive fibonacci starts taking more time than the iterative one
-        the difference becomes more pronounced once n takes vales > 30
+        From n > 9, recursive fibonacci starts taking more time than the iterative one,
+        the difference becomes more pronounced once n takes values > 30
         */
         int n = 30;
         final long t1 = System.currentTimeMillis();

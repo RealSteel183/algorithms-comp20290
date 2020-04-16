@@ -1,11 +1,11 @@
-package p9;
+package util;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 /*
- *  Compilation:  javac StdIn.java
- *  Execution:    java StdIn   (interactive test of basic functionality)
+ *  Compilation:  javac util/StdIn.java
+ *  Execution:    java util/StdIn   (interactive test of basic functionality)
  *  Dependencies: none
  *
  *  Reads in data of various types from standard input.
@@ -327,7 +327,7 @@ public final class StdIn {
             return "";
 
         String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
-        // not that important to reset delimeter, since now scanner is empty
+        // not that important to reset delimiter, since now scanner is empty
         scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
         return result;
     }

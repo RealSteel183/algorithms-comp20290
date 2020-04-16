@@ -1,17 +1,17 @@
-package p9;
+package util;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
 /*
- *  Compilation:  javac BinaryStdIn.java
- *  Execution:    java BinaryStdIn < input > output
+ *  Compilation:  javac util/BinaryStdIn.java
+ *  Execution:    java util/BinaryStdIn < input > output
  *  Dependencies: none
  *
  *  Supports reading binary data from standard input.
  *
- *  % java BinaryStdIn < input.jpg > output.jpg
+ *  % java util/BinaryStdIn < input.jpg > output.jpg
  *  % diff input.jpg output.jpg
  *
  */
@@ -288,7 +288,6 @@ public final class BinaryStdIn {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-
         // read one 8-bit char at a time
         while (!BinaryStdIn.isEmpty()) {
             char c = BinaryStdIn.readChar();

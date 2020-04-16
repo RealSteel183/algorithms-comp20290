@@ -1,4 +1,4 @@
-package p9;
+package util;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -7,8 +7,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 /*
- *  Compilation:  javac BinaryOut.java
- *  Execution:    java BinaryOut
+ *  Compilation:  javac util/BinaryOut.java
+ *  Execution:    java util/BinaryOut
  *  Dependencies: none
  *
  *  Write binary data to an output stream, either one 1-bit boolean,

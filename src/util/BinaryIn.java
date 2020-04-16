@@ -1,4 +1,4 @@
-package p9;
+package util;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,8 +7,8 @@ import java.net.URLConnection;
 import java.util.NoSuchElementException;
 
 /*
- *  Compilation:  javac BinaryIn.java
- *  Execution:    java BinaryIn input output
+ *  Compilation:  javac util/BinaryIn.java
+ *  Execution:    java util/BinaryIn input output
  *  Dependencies: none
  *
  *  This library is for reading binary data from an input stream.

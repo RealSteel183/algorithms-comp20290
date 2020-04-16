@@ -1,10 +1,10 @@
-package p9;
+package util;
 
 /*
- *  Compilation:  javac RunLength.java
- *  Execution:    java RunLength - < input.txt   (compress)
- *  Execution:    java RunLength + < input.txt   (expand)
- *  Dependencies: BinaryIn.java BinaryOut.java
+ *  Compilation:  javac util/RunLength.java
+ *  Execution:    java util/RunLength - < p9/input.txt   (compress)
+ *  Execution:    java util/RunLength + < p9/input.txt   (expand)
+ *  Dependencies: p9/BinaryIn.java, p9/BinaryOut.java
  *  Data files:   https://algs4.cs.princeton.edu/55compression/4runs.bin
  *                https://algs4.cs.princeton.edu/55compression/q32x48.bin
  *                https://algs4.cs.princeton.edu/55compression/q64x96.bin
@@ -12,13 +12,13 @@ package p9;
  *  Compress or expand binary input from standard input using
  *  run-length encoding.
  *
- *  % java BinaryDump 40 < 4runs.bin
+ *  % java util/BinaryDump 40 < p9/4runs.bin
  *  0000000000000001111111000000011111111111
  *  40 bits
  *
  *  This has runs of 15 0s, 7 1s, 7 0s, and 11 1s.
  *
- *  % java RunLength - < 4runs.bin | java HexDump
+ *  % java util/RunLength - < p9/4runs.bin | java util/HexDump
  *  0f 07 07 0b
  *  4 bytes
  *

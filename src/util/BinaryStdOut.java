@@ -1,11 +1,11 @@
-package p9;
+package util;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 
 /*
- *  Compilation:  javac BinaryStdOut.java
- *  Execution:    java BinaryStdOut
+ *  Compilation:  javac util/BinaryStdOut.java
+ *  Execution:    java util/BinaryStdOut
  *  Dependencies: none
  *
  *  Write binary data to standard output, either one 1-bit boolean,

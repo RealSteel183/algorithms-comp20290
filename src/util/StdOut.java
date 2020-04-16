@@ -1,4 +1,4 @@
-package p9;
+package util;
 
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -6,8 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /*
- *  Compilation:  javac StdOut.java
- *  Execution:    java StdOut
+ *  Compilation:  javac util/StdOut.java
+ *  Execution:    java util/StdOut
  *  Dependencies: none
  *
  *  Writes data of various types to standard output.
@@ -304,7 +304,6 @@ public final class StdOut {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-
         // write to stdout
         StdOut.println("Test");
         StdOut.println(17);

@@ -1,14 +1,14 @@
-package p9;
+package util;
 
 /*
- *  Compilation:  javac HexDump.java
- *  Execution:    java HexDump < file
- *  Dependencies: BinaryStdIn.java StdOut.java
+ *  Compilation:  javac util/HexDump.java
+ *  Execution:    java util/HexDump < file
+ *  Dependencies: util/BinaryStdIn.java, util/StdOut.java
  *  Data file:    https://algs4.cs.princeton.edu/55compression/abra.txt
  *
  *  Reads in a binary file and writes out the bytes in hex, 16 per line.
  *
- *  % more abra.txt
+ *  % more p9/abra.txt
  *  ABRACADABRA!
  *
  *  % java HexDump 16 < abra.txt
@@ -20,7 +20,7 @@ package p9;
  *  --------------------------
  *   - Similar to the Unix utilities od (octal dump) or hexdump (hexadecimal dump).
  *
- *  % od -t x1 < abra.txt
+ *  % od -t x1 < p9/abra.txt
  *  0000000 41 42 52 41 43 41 44 41 42 52 41 21
  *  0000014
  *
@@ -51,7 +51,7 @@ public class HexDump {
 
     /**
      * Reads in a sequence of bytes from standard input and writes
-     * them to standard output using hexademical notation, k hex digits
+     * them to standard output using hexadecimal notation, k hex digits
      * per line, where k is given as a command-line integer (defaults
      * to 16 if no integer is specified); also writes the number
      * of bits.

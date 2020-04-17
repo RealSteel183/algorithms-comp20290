@@ -14,7 +14,7 @@ Clone the repository into your IDE and build the project.
 Run [Main.java](./src/Main.java) to view the features of the repository.  
 The contents and documented results/graphs are summarised below.  
 
-#### Summary
+## Summary
 | # | Title | File | Description |  
 |---| ----- | ---- | ----------- |
 | 1 | [Algorithm Analysis](./src/p1) | [RussianPeasant](./src/p1/RussianPeasant.java) | Multiplies two numbers using the Russian Peasant's algorithm 
@@ -39,8 +39,8 @@ The contents and documented results/graphs are summarised below.
 | 11| [Assignment: Huffman Compression](./src/assignment) | -|- |
 | 12| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment.
 
-#### Documentation
-Documented results and graphs for performance of some algorithms.  
+## Documentation
+Documented results and graphs for performance of some implemented algorithms.  
 
 | # | File | Description |
 |---| ---- | ----------- | 

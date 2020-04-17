@@ -1,11 +1,11 @@
 package assignment;
 
-import assignment.helper_code.BinaryStdIn;
-import assignment.helper_code.BinaryStdOut;
-import assignment.helper_code.MinPQ;
+import util.BinaryStdIn;
+import util.BinaryStdOut;
+import util.MinPQ;
 
 /*
- *  Compilation:  javac Huffman.java
+ *  Compilation:  javac assignment/Huffman.java
  *
  *  Compress or expand a binary input stream using the Huffman algorithm.
  *

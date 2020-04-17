@@ -1,18 +1,18 @@
-package assignment.helper_code;
+package util;
 
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /*
- *  Compilation:  javac MinPQ.java
- *  Execution:    java MinPQ < input.txt
- *  Dependencies: StdIn.java StdOut.java
+ *  Compilation:  javac util/MinPQ.java
+ *  Execution:    java util/MinPQ < input.txt
+ *  Dependencies: util/StdIn.java util/StdOut.java
  *
  *  Generic min priority queue implementation with a binary heap.
  *  Can be used with a comparator instead of the natural order.
  *
- *  % java MinPQ < tinyPQ.txt
+ *  % java util/MinPQ < tinyPQ.txt
  *  E A E (6 left on pq)
  *
  *  We use a one-based array to simplify parent and child calculations.

@@ -1,6 +1,6 @@
 package p6;
 
-import util.TestRunner;
+import p4.TestRunner;
 
 /**
  * Compare the performance of merge sort, quick sort, and enhanced quick sort.

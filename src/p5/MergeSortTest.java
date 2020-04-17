@@ -1,6 +1,6 @@
 package p5;
 
-import util.TestRunner;
+import p4.TestRunner;
 
 /**
  * Compare the performance of insertion sort, merge sort, and enhanced merge sort.

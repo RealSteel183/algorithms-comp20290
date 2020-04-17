@@ -1,6 +1,4 @@
-package util;
-
-import p4.Sort;
+package p4;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -15,7 +13,7 @@ import java.util.Scanner;
  */
 public class TestRunner {
     static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Integer[]> random_arrays = new ArrayList<>();
+    private static final ArrayList<Integer[]> RANDOM_ARRAYS = new ArrayList<>();
 
     /**
      * Display user options and perform tasks according to choice
@@ -51,9 +49,9 @@ public class TestRunner {
 
     // Generate random arrays of specified sizes
     private static void generateRandomArrays(int[] array_sizes) {
-        random_arrays.clear();
+        RANDOM_ARRAYS.clear();
         for (int size : array_sizes) {
-            random_arrays.add(generateArray(size));
+            RANDOM_ARRAYS.add(generateArray(size));
         }
     }
 
@@ -80,7 +78,7 @@ public class TestRunner {
     private static void timingAnalysis(String sortType) throws Exception {
         printLine();
         System.out.printf("-%s-\n", sortType.toUpperCase());
-        for (Integer[] a : random_arrays) {
+        for (Integer[] a : RANDOM_ARRAYS) {
             Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
             Sort<Integer> sort = new Sort<>(sortType, array);
@@ -97,7 +95,7 @@ public class TestRunner {
         Copy only the first 2 small arrays of size 10 and 12.
         Larger order array sizes are impractical to display in terminal.
         */
-        Integer[][] copy_arrays = {random_arrays.get(0), random_arrays.get(1)};
+        Integer[][] copy_arrays = {RANDOM_ARRAYS.get(0), RANDOM_ARRAYS.get(1)};
         for (Integer[] a : copy_arrays) {
             Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);

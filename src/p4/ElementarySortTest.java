@@ -1,7 +1,5 @@
 package p4;
 
-import util.TestRunner;
-
 /**
  * Compare the performance of selection sort, insertion sort, and bogo sort.
  *

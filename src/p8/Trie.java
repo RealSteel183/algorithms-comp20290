@@ -1,9 +1,16 @@
 package p8;
 
+import util.StdOut;
+
+/**
+ * Builds a Trie data structure to help store and search for String keys.
+ *
+ * @author Rajit Banerjee
+ */
 public class Trie {
     // Number of symbols: 26 for the English alphabet
     private static final int ALPHABET_SIZE = 26;
-    private static TrieNode root = new TrieNode();
+    private static final TrieNode ROOT = new TrieNode();
 
     /**
      * Inserts a key into the Trie.
@@ -11,7 +18,7 @@ public class Trie {
      * @param key to be inserted into Trie.
      */
     public static void insert(String key) {
-        TrieNode curr = root;
+        TrieNode curr = ROOT;
         for (char letter : key.toCharArray()) {
             // If letter not in Trie, create child node with letter
             if (curr.getChild(letter) == null) {
@@ -29,7 +36,7 @@ public class Trie {
      * @return {@code true}, if key is present in Trie
      */
     public static boolean search(String key) {
-        TrieNode curr = root;
+        TrieNode curr = ROOT;
         for (char letter : key.toCharArray()) {
             // Return false at any point a child letter is not found
             if (curr.getChild(letter) == null) {
@@ -56,13 +63,13 @@ public class Trie {
         String[] input = {"bank", "out", "band", "silver"};
         for (String word : input) {
             int index = search(word) ? 1 : 0;
-            System.out.printf("\t%s:\t%s\n", word, output[index]);
+            StdOut.printf("\t%s:\t%s\n", word, output[index]);
         }
     }
 
     // Inner class to represent the constituent node of a Trie
     private static class TrieNode {
-        private TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+        private final TrieNode[] children = new TrieNode[ALPHABET_SIZE];
         private boolean isEndOfWord; // Checks if node is leaf node (end of a word)
 
         // Creates a new node in the Trie

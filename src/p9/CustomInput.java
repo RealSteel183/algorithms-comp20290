@@ -4,6 +4,12 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Generates a custom input file with ASCII null characters, suitable for
+ * binary run length encoding.
+ *
+ * @author Rajit Banerjee
+ */
 public class CustomInput {
     public static void main(String[] args) throws IOException {
         File file = new File("src/p9/custom_input.txt");

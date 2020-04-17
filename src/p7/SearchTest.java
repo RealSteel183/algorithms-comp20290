@@ -1,13 +1,20 @@
 package p7;
 
+import util.StdOut;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Compares the performance of brute force and KMP substring search.
+ *
+ * @author Rajit Banerjee
+ */
 public class SearchTest {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(new File("src/p7/input.txt"));
-        System.out.println("TEXT SIZE\tBRUTE FORCE SEARCH\tKMP SEARCH");
+        StdOut.println("TEXT SIZE\tBRUTE FORCE SEARCH\tKMP SEARCH");
         while (sc.hasNext()) {
             String pattern = sc.next();
             String text = sc.next();
@@ -20,7 +27,7 @@ public class SearchTest {
             KMPSearch.search(pattern, text);
             long kmp = System.nanoTime() - startTime;
 
-            System.out.printf("%d\t%d\t%d\n", text.length(), bruteForce, kmp);
+            StdOut.printf("%d\t%d\t%d\n", text.length(), bruteForce, kmp);
         }
     }
 

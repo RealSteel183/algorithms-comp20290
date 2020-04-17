@@ -1,7 +1,14 @@
 package p7;
 
+import util.StdOut;
+
 import java.util.Arrays;
 
+/**
+ * Knuth-Morris-Pratt algorithm implementation for substring search.
+ *
+ * @author Rajit Banerjee
+ */
 public class KMPSearch {
     public static int search(String pattern, String text) {
         int patLen = pattern.length();
@@ -46,7 +53,7 @@ public class KMPSearch {
         String text = "ABABDABACDABABCABAB";
         String pattern = "ABABCABAB";
         int index = search(pattern, text);
-        System.out.printf("\n%s found in %s at index %d.\n", pattern, text, index);
+        StdOut.printf("\n%s found in %s at index %d.\n", pattern, text, index);
     }
 
 }

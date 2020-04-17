@@ -1,9 +1,11 @@
 package p4;
 
+import util.StdIn;
+import util.StdOut;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Test framework to compare performance of various types of sorts
@@ -12,7 +14,6 @@ import java.util.Scanner;
  * @author Rajit Banerjee
  */
 public class TestRunner {
-    static Scanner sc = new Scanner(System.in);
     private static final ArrayList<Integer[]> RANDOM_ARRAYS = new ArrayList<>();
 
     /**
@@ -27,7 +28,7 @@ public class TestRunner {
         promptUser();
         int op = 0;
         try {
-            op = sc.nextInt();
+            op = StdIn.readInt();
         } catch (InputMismatchException e) {
             System.err.println("Invalid option!");
         }
@@ -68,21 +69,21 @@ public class TestRunner {
 
     // Prompt the user to choose from a menu
     private static void promptUser() {
-        System.out.println("-Sorting Analysis-");
-        System.out.println("1. Run timing analysis.");
-        System.out.println("2. See sorted arrays (only small sizes).");
-        System.out.print("Choose 1 or 2: ");
+        StdOut.println("-Sorting Analysis-");
+        StdOut.println("1. Run timing analysis.");
+        StdOut.println("2. See sorted arrays (only small sizes).");
+        StdOut.print("Choose 1 or 2: ");
     }
 
     // Timing analysis
     private static void timingAnalysis(String sortType) throws Exception {
         printLine();
-        System.out.printf("-%s-\n", sortType.toUpperCase());
+        StdOut.printf("-%s-\n", sortType.toUpperCase());
         for (Integer[] a : RANDOM_ARRAYS) {
             Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
             Sort<Integer> sort = new Sort<>(sortType, array);
-            System.out.printf("Time taken for array of size %d = %d nanoseconds\n", array.length,
+            StdOut.printf("Time taken for array of size %d = %d nanoseconds\n", array.length,
                     Timing.nanoTimePerformance(sort));
             if (Sort.isNotSorted(array)) throw
                     new AssertionError(String.format("%s didn't work!", sortType));
@@ -101,10 +102,10 @@ public class TestRunner {
             System.arraycopy(a, 0, array, 0, a.length);
             Sort<Integer> sort = new Sort<>(sortType, array);
 
-            System.out.println("\nArray size: " + array.length);
-            System.out.printf("BEFORE %s:\t%s\n", sortType.toUpperCase(), Sort.display(array));
+            StdOut.println("\nArray size: " + array.length);
+            StdOut.printf("BEFORE %s:\t%s\n", sortType.toUpperCase(), Sort.display(array));
             sort.call();
-            System.out.printf("AFTER %s:\t%s\n", sortType.toUpperCase(), Sort.display(array));
+            StdOut.printf("AFTER %s:\t%s\n", sortType.toUpperCase(), Sort.display(array));
             if (Sort.isNotSorted(array)) throw
                     new AssertionError(String.format("%s didn't work!", sortType));
         }
@@ -113,9 +114,9 @@ public class TestRunner {
     // Print a line of dashes
     private static void printLine() {
         for (int i = 0; i < 57; i++) {
-            System.out.print("-");
+            StdOut.print("-");
         }
-        System.out.println();
+        StdOut.println();
     }
 
 }

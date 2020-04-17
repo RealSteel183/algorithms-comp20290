@@ -1,7 +1,10 @@
 package p2;
 
+import util.In;
+
 /**
- * Compilation: javac ThreeSumA.java Execution: java ThreeSum input.txt
+ * Compilation: javac p2/ThreeSumA.java
+ * Execution: java p2/ThreeSum p2/input.txt
  *
  * @author Robert Sedgewick
  * @author Kevin Wayne

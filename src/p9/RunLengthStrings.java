@@ -1,17 +1,22 @@
 package p9;
 
+import util.StdOut;
+
 /*
  *  Compilation:  javac p9/RunLengthStrings.java
  *  Execution:    java p9/RunLengthStrings someString
  *  Dependencies: p9/StdOut.java
  */
 
-import util.StdOut;
-
 /**
- * The {@code RunLengthStrings} class provides static methods for compressing
- * and expanding String input.
- * E.g. aaaabbbbbcdefff is compressed to a4b5cdef3
+ * The {@code RunLengthStrings} class provides a static method for
+ * compressing a String provided as command line argument.
+ * E.g.
+ * % java p9/RunLengthStrings aaaabbbbbcdefff
+ * Original string:
+ * aaaabbbbbcdefff
+ * Compressed string:
+ * a4b5cdef3
  *
  * @author Rajit Banerjee
  */
@@ -50,8 +55,8 @@ public class RunLengthStrings {
      */
     public static void main(String[] args) {
         if (args.length != 0) {
-            System.out.println("Original string:\n" + args[0]);
-            System.out.println("Compressed string:");
+            StdOut.println("Original string:\n" + args[0]);
+            StdOut.println("Compressed string:");
             compress(args[0]);
         }
     }

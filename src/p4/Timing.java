@@ -3,7 +3,7 @@ package p4;
 import java.util.concurrent.Callable;
 
 /**
- * Timing analysis on a Callable class.
+ * Timing analysis on a Callable class object.
  *
  * @author Rajit Banerjee
  */

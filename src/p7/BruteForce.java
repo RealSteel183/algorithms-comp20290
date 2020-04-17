@@ -1,5 +1,12 @@
 package p7;
 
+import util.StdOut;
+
+/**
+ * Brute force implementation of a substring search.
+ *
+ * @author Rajit Banerjee
+ */
 public class BruteForce {
     /**
      * Brute force search for pattern in text.
@@ -37,12 +44,12 @@ public class BruteForce {
         return -1;
     }
 
+    // Driver program to test above function
     public static void main(String[] args) {
-        //alter to take text file in..
         String text = "ABABDABACDABABCABAB";
         String pattern = "ABABCABAB";
         int index = search(pattern, text);
-        System.out.printf("\n%s found in %s at index %d.\n", pattern, text, index);
+        StdOut.printf("\n%s found in %s at index %d.\n", pattern, text, index);
     }
 
 }

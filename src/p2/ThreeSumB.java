@@ -1,10 +1,12 @@
 package p2;
 
+import util.In;
+
 import java.util.Arrays;
 
 /**
- * Compilation:  javac ThreeSumB.java
- * Execution:    java ThreeSumB input.txt
+ * Compilation:  javac p2/ThreeSumB.java
+ * Execution:    java p2/ThreeSumB p2/input.txt
  * <p>
  * Reads n integers
  * and counts the number of triples that sum to exactly 0.

@@ -1,6 +1,6 @@
 package p1;
 
-import java.util.Scanner;
+import util.StdIn;
 
 /**
  * Multiplication of two numbers using the Russian Peasant's algorithm.
@@ -9,11 +9,9 @@ import java.util.Scanner;
  */
 public class RussianPeasant {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.print("Enter two numbers to multiply: ");
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        sc.close();
+        int a = StdIn.readInt();
+        int b = StdIn.readInt();
 
         final long startTime = System.currentTimeMillis();
         int ans = RussianMultiply(a, b);
@@ -21,7 +19,6 @@ public class RussianPeasant {
 
         System.out.println("Product (" + a + " x " + b + ") = " + ans);
         System.out.println("Time taken: " + elapsedTime + " milliseconds");
-
     }
 
     // Implement the Russian Peasant's algorithm

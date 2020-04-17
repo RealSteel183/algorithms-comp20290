@@ -1,31 +1,33 @@
 package p1;
 
 import util.StdIn;
+import util.StdOut;
 
 /**
- * Multiplication of two numbers using the Russian Peasant's algorithm.
+ * Multiplication of two long integers using the Russian Peasant's algorithm.
  *
  * @author Rajit Banerjee
  */
 public class RussianPeasant {
     public static void main(String[] args) {
-        System.out.print("Enter two numbers to multiply: ");
-        int a = StdIn.readInt();
-        int b = StdIn.readInt();
+        StdOut.println("~ Russian Peasant's multiplication algorithm ~");
+        StdOut.println("Enter two numbers to multiply:");
+        long a = StdIn.readLong();
+        long b = StdIn.readLong();
 
-        final long startTime = System.currentTimeMillis();
-        int ans = RussianMultiply(a, b);
-        final long elapsedTime = System.currentTimeMillis() - startTime;
+        final long startTime = System.nanoTime();
+        long ans = RussianMultiply(a, b);
+        final long elapsedTime = System.nanoTime() - startTime;
 
-        System.out.println("Product (" + a + " x " + b + ") = " + ans);
-        System.out.println("Time taken: " + elapsedTime + " milliseconds");
+        StdOut.println("Product (" + a + " x " + b + ") = " + ans);
+        StdOut.println("Time taken: " + elapsedTime + " nanoseconds");
     }
 
     // Implement the Russian Peasant's algorithm
-    private static int RussianMultiply(int m, int n) {
-        int res = 0;
-        int smaller = Math.min(m, n);
-        int larger = Math.max(m, n);
+    private static long RussianMultiply(long m, long n) {
+        long res = 0;
+        long smaller = Math.min(m, n);
+        long larger = Math.max(m, n);
         while (smaller != 0) {
             // if the smaller number is is odd, add the larger number to result
             if (smaller % 2 == 1) {

@@ -17,7 +17,7 @@ The contents and documented results/graphs are summarised below.
 ## Summary
 | # | Title | File | Description |  
 |---| ----- | ---- | ----------- |
-| 1 | [Algorithm Analysis](./src/p1) | [RussianPeasant](./src/p1/RussianPeasant.java) | Multiplies two numbers using the Russian Peasant's algorithm 
+| 1 | [Algorithm Analysis](./src/p1) | [RussianPeasant](./src/p1/RussianPeasant.java) | Multiplies two numbers using the Russian Peasant's algorithm.
 | 2 | [Complexity Analysis](./src/p2) | [ThreeSumA](./src/p2/ThreeSumA.java) | Uses brute force to count the number of triples in a file, summing to 0. <br> Complexity = O(n<sup>3</sup>)
 | | | [ThreeSumB](./src/p2/ThreeSumB.java) | Uses the binary search algorithm to efficiently count the number of triples in a file, summing to 0. <br> Complexity = O(n<sup>2</sup> log n)
 | 3 | [Recursion](./src/p3) | [Fibonacci](./src/p3/Fibonacci.java) | Computes the Nth Fibonacci number, taking N as user input.

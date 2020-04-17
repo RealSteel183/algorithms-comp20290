@@ -22,10 +22,12 @@ public class BruteForce {
         for (int i = 0; i <= textLen - patLen; i++) {
             int j = -1;
             while (++j < patLen) {
+                // Exit as soon as mismatch is found
                 if (text.charAt(i + j) != pattern.charAt(j)) {
                     break;
                 }
             }
+            // Return index if mismatch is found after entire pattern in matched
             if (j == patLen) {
                 return i;
             }

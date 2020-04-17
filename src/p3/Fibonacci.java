@@ -4,7 +4,7 @@ import util.StdIn;
 import util.StdOut;
 
 /**
- * Two approaches, iterative and recursive, to find the nth
+ * Two approaches, iterative and recursive, to find the Nth
  * Fibonacci number.
  *
  * @author Rajit Banerjee
@@ -35,6 +35,7 @@ public class Fibonacci {
         }
     }
 
+    // Main method to compare the recursive and iterative Fibonacci functions
     public static void main(String[] args) {
         /*
         From n > 9, recursive fibonacci starts taking more time than the iterative one,

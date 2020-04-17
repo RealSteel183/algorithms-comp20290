@@ -22,7 +22,7 @@ The contents and documented results/graphs are summarised below.
 | | | [ThreeSumB](./src/p2/ThreeSumB.java) | Uses the binary search algorithm to efficiently count the number of triples in a file, summing to 0. <br> Complexity = O(n<sup>2</sup> log n)
 | 3 | [Recursion](./src/p3) | [Fibonacci](./src/p3/Fibonacci.java) | Computes the Nth Fibonacci number, taking N as user input.
 | | | [Hanoi](./src/p3/Hanoi.java) | Solves the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) problem, for a user specified number of disks.
-| 4 | [Elementary Sorting](./src/p4) | [Sort](./src/p4/Sort.java) | Contains implementations of multiple sorting algorithms: selection, bogo, insertion, merge, enhanced merge, quick, and enhanced quick. <br> It implements the [Callable](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) interface, so the call() method invokes any of the required sort methods on any specified array.
+| 4 | [Elementary Sorting](./src/p4) | [Sort](./src/p4/Sort.java) | Contains implementations of multiple sorting algorithms: selection, insertion, bogo, merge, enhanced merge, quick, and enhanced quick. <br> It implements the [Callable](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) interface, so the call() method invokes any of the required sort methods on any specified array.
 | | | [Timing](./src/p4/Timing.java) | Utility used in sort [TestRunner](./src/p4/TestRunner.java) to compute the nano time performance of a [Callable](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) class object. 
 | | | [TestRunner](./src/p4/TestRunner.java) | Test framework to compare performance of various types of sorts defined in the [Sort](./src/p4/Sort.java) class. Depending on the user's choice, <br> 1. It can run a timing analysis for sorting randomly generated arrays of different sizes, <br> 2. It can visualise the sorts for small sized arrays.
 | | | [ElementarySortTest](./src/p4/ElementarySortTest.java) | Compares the performance of selection sort, insertion sort, and bogo sort. 
@@ -45,9 +45,9 @@ Documented results and graphs for performance of some implemented algorithms.
 | # | File | Description |
 |---| ---- | ----------- | 
 | 1 |  | Russian Peasant's algorithm timing analysis with inputs of different sizes.
-| 2 | [Complexity Analysis](./src/p2/Practical%202%20-%20Complexity%20Analysis.pdf) | Compares the performance of ThreeSumA and ThreeSumB to count triples <br> summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
-| 3 | [Sorting](./src/p6/Sorting%20Graphs.xlsx) | Excel sheet containing graphs for practicals 4, 5 and 6: comparing <br> performances of various sorting algorithms. <br> Also see: [Elementary Sorting](./src/p4/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./src/p5/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./src/p6/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
-| 4 | [Substring Search](./src/p7/Search%20Time%20Graph.xlsx) | Excel sheet comparing the performance of brute force and KMP substring <br> search algorithms, using data from the [input file](./src/p7/input.txt).
+| 2 | [Complexity Analysis](./src/p2/Practical%202%20-%20Complexity%20Analysis.pdf) | Compares the performance of ThreeSumA and ThreeSumB to count triples summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
+| 3 | [Sorting](./src/p6/Sorting%20Graphs.xlsx) | Excel sheet containing graphs for practicals 4, 5 and 6: comparing performances of various sorting algorithms. Also see: [Elementary Sorting](./src/p4/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./src/p5/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./src/p6/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
+| 4 | [Substring Search](./src/p7/Search%20Time%20Graph.xlsx) | Excel sheet comparing the performance of brute force and KMP substring search algorithms, using data from the [input file](./src/p7/input.txt).
 | 5 | [Run Length Compression](./src/p9/Practical%209%20-%20Run%20Length%20Compression.pdf) | Documented results from run length compression experiments.
 
 ## Authors:

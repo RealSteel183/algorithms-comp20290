@@ -9,6 +9,7 @@ import util.StdOut;
  * @author Rajit Banerjee
  */
 public class RussianPeasant {
+    // Main method to test the Russian Peasant's algorithm
     public static void main(String[] args) {
         StdOut.println("~ Russian Peasant's multiplication algorithm ~");
         StdOut.println("Enter two numbers to multiply:");

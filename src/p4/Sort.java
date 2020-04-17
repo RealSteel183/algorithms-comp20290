@@ -2,6 +2,7 @@ package p4;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.concurrent.Callable;
 
 /**
@@ -268,12 +269,7 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
      * @param <E> generic type of array items
      */
     public static <E extends Comparable<E>> String display(E[] arr) {
-        StringBuilder ans = new StringBuilder("[");
-        for (int i = 0; i < arr.length - 1; i++) {
-            ans.append(arr[i]).append(", ");
-        }
-        ans.append(arr[arr.length - 1]).append("]");
-        return ans.toString();
+        return Arrays.toString(arr);
     }
 
     /**

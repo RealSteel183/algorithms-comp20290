@@ -87,6 +87,26 @@ public final class BinaryOut {
         }
     }
 
+    /**
+     * Test client. Read bits from standard input and write to the file
+     * specified on command line.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) {
+
+        // create binary output stream to write to file
+        String filename = args[0];
+        BinaryOut out = new BinaryOut(filename);
+        BinaryIn in = new BinaryIn();
+
+        // read from standard input and write to file
+        while (!in.isEmpty()) {
+            char c = in.readChar();
+            out.write(c);
+        }
+        out.flush();
+    }
 
     /**
      * Writes the specified bit to the binary output stream.
@@ -167,7 +187,6 @@ public final class BinaryOut {
         }
     }
 
-
     /**
      * Writes the specified bit to the binary output stream.
      *
@@ -218,7 +237,6 @@ public final class BinaryOut {
             writeBit(bit);
         }
     }
-
 
     /**
      * Writes the 64-bit double to the binary output stream.
@@ -308,7 +326,6 @@ public final class BinaryOut {
             write(s.charAt(i));
     }
 
-
     /**
      * Writes the string of r-bit characters to the binary output stream.
      *
@@ -321,28 +338,6 @@ public final class BinaryOut {
     public void write(String s, int r) {
         for (int i = 0; i < s.length(); i++)
             write(s.charAt(i), r);
-    }
-
-
-    /**
-     * Test client. Read bits from standard input and write to the file
-     * specified on command line.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-
-        // create binary output stream to write to file
-        String filename = args[0];
-        BinaryOut out = new BinaryOut(filename);
-        BinaryIn in = new BinaryIn();
-
-        // read from standard input and write to file
-        while (!in.isEmpty()) {
-            char c = in.readChar();
-            out.write(c);
-        }
-        out.flush();
     }
 
 }

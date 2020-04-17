@@ -69,7 +69,6 @@ public class TestRunner {
 
     // Prompt the user to choose from a menu
     private static void promptUser() {
-        StdOut.println("-Sorting Analysis-");
         StdOut.println("1. Run timing analysis.");
         StdOut.println("2. See sorted arrays (only small sizes).");
         StdOut.print("Choose 1 or 2: ");

@@ -1,5 +1,6 @@
 package p7;
 
+import util.StdIn;
 import util.StdOut;
 
 /**
@@ -44,12 +45,19 @@ public class BruteForce {
         return -1;
     }
 
-    // Driver program to test above function
+    // Driver program to test above search function above
     public static void main(String[] args) {
-        String text = "ABABDABACDABABCABAB";
-        String pattern = "ABABCABAB";
+        StdOut.println("~ Search for a pattern in text using brute force ~");
+        StdOut.println("Enter text:");
+        String text = StdIn.readString();
+        StdOut.println("Enter pattern:");
+        String pattern = StdIn.readString();
         int index = search(pattern, text);
-        StdOut.printf("\n%s found in %s at index %d.\n", pattern, text, index);
+        if (index == -1) {
+            StdOut.printf("\n%s NOT found in %s\n", pattern, text);
+        } else {
+            StdOut.printf("\n%s found in %s at index %d\n", pattern, text, index);
+        }
     }
 
 }

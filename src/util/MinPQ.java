@@ -111,6 +111,21 @@ public class MinPQ<Key> implements Iterable<Key> {
     }
 
     /**
+     * Unit tests the {@code MinPQ} data type.
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) {
+        MinPQ<String> pq = new MinPQ<>();
+        while (!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-")) pq.insert(item);
+            else if (!pq.isEmpty()) StdOut.print(pq.delMin() + " ");
+        }
+        StdOut.println("(" + pq.size() + " left on pq)");
+    }
+
+    /**
      * Returns true if this priority queue is empty.
      *
      * @return {@code true} if this priority queue is empty;
@@ -180,7 +195,6 @@ public class MinPQ<Key> implements Iterable<Key> {
         assert isMinHeap();
         return min;
     }
-
 
     /***************************************************************************
      * Helper functions to restore the heap invariant.
@@ -280,21 +294,6 @@ public class MinPQ<Key> implements Iterable<Key> {
             if (!hasNext()) throw new NoSuchElementException();
             return copy.delMin();
         }
-    }
-
-    /**
-     * Unit tests the {@code MinPQ} data type.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        MinPQ<String> pq = new MinPQ<>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
-            if (!item.equals("-")) pq.insert(item);
-            else if (!pq.isEmpty()) StdOut.print(pq.delMin() + " ");
-        }
-        StdOut.println("(" + pq.size() + " left on pq)");
     }
 
 }

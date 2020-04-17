@@ -1,6 +1,7 @@
 package p6;
 
 import p4.TestRunner;
+import util.StdOut;
 
 /**
  * Compare the performance of merge sort, quick sort, and enhanced quick sort.
@@ -12,6 +13,7 @@ public class QuickSortTest {
 
     // Run tests for various sorting algorithms
     public static void main(String[] args) throws Exception {
+        StdOut.println("~ Compare the performance of merge, quick, and enhanced quick sorts ~");
         String[] sortTypes = {"merge_sort", "quick_sort", "enhanced_quick_sort"};
         TestRunner.run(sortTypes, ARRAY_SIZES);
     }

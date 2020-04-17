@@ -1,5 +1,6 @@
 package p7;
 
+import util.StdIn;
 import util.StdOut;
 
 import java.util.Arrays;
@@ -48,12 +49,19 @@ public class KMPSearch {
         return lps;
     }
 
-    // Driver program to test above function
+    // Driver program to test search function above
     public static void main(String[] args) {
-        String text = "ABABDABACDABABCABAB";
-        String pattern = "ABABCABAB";
+        StdOut.println("~ Search for a pattern in text using Knuth-Morris-Pratt algorithm ~");
+        StdOut.println("Enter text:");
+        String text = StdIn.readString();
+        StdOut.println("Enter pattern:");
+        String pattern = StdIn.readString();
         int index = search(pattern, text);
-        StdOut.printf("\n%s found in %s at index %d.\n", pattern, text, index);
+        if (index == -1) {
+            StdOut.printf("\n%s NOT found in %s\n", pattern, text);
+        } else {
+            StdOut.printf("\n%s found in %s at index %d\n", pattern, text, index);
+        }
     }
 
 }

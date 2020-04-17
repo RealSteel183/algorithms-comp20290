@@ -49,6 +49,32 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     }
 
     /**
+     * Apply InsertionSort on the given array.
+     *
+     * @param arr array to be sorted
+     * @param <E> generic type of array items
+     */
+    public static <E extends Comparable<E>> void insertion_sort(E[] arr) {
+        insertion_sort(arr, 0, arr.length - 1);
+    }
+
+    // Insertion sort algorithm
+    private static <E extends Comparable<E>> void insertion_sort(E[] arr, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++) {
+            E key = arr[i];
+            int j = i - 1;
+            /*
+             Shift elements to the right as long as
+             they are greater than key element
+             */
+            while (j >= lo && arr[j].compareTo(key) > 0) {
+                arr[j + 1] = arr[j--];
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    /**
      * Apply BogoSort (silly sort) on the given array.
      *
      * @param arr array to be sorted
@@ -81,32 +107,6 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
         for (int i = 0; i < a.length; i++) {
             int random_index = (int) (Math.random() * (i + 1));
             swap(a, random_index, i);
-        }
-    }
-
-    /**
-     * Apply InsertionSort on the given array.
-     *
-     * @param arr array to be sorted
-     * @param <E> generic type of array items
-     */
-    public static <E extends Comparable<E>> void insertion_sort(E[] arr) {
-        insertion_sort(arr, 0, arr.length - 1);
-    }
-
-    // Insertion sort algorithm
-    private static <E extends Comparable<E>> void insertion_sort(E[] arr, int lo, int hi) {
-        for (int i = lo + 1; i <= hi; i++) {
-            E key = arr[i];
-            int j = i - 1;
-            /*
-             Shift elements to the right as long as
-             they are greater than key element
-             */
-            while (j >= lo && arr[j].compareTo(key) > 0) {
-                arr[j + 1] = arr[j--];
-            }
-            arr[j + 1] = key;
         }
     }
 

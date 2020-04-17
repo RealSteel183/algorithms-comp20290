@@ -2,6 +2,8 @@ package p8;
 
 import util.StdOut;
 
+import java.util.Arrays;
+
 /**
  * Builds a Trie data structure to help store and search for String keys.
  *
@@ -50,6 +52,7 @@ public class Trie {
 
     // Simple tests for key insertion and search using a Trie
     public static void main(String[] args) {
+        StdOut.println("~ Demonstrate construction of a Trie, and search for certain words ~");
         // Input keys (use only lowercase 'a' - 'z')
         String[] keys = {"bank", "book", "bar", "bring", "film",
                 "filter", "simple", "silt", "silver"};
@@ -61,6 +64,8 @@ public class Trie {
         }
         // Search for different keys
         String[] input = {"bank", "out", "band", "silver"};
+        StdOut.println("\nWords inserted in trie: " + Arrays.toString(keys));
+        StdOut.println("Words to be searched in trie: " + Arrays.toString(input) + "\n");
         for (String word : input) {
             int index = search(word) ? 1 : 0;
             StdOut.printf("\t%s:\t%s\n", word, output[index]);

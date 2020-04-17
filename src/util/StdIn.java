@@ -231,6 +231,11 @@ public final class StdIn {
 
     private static Scanner scanner;
 
+    // do this once when StdIn is initialized
+    static {
+        resync();
+    }
+
     // it doesn't make sense to instantiate this class
     private StdIn() {
     }
@@ -278,7 +283,6 @@ public final class StdIn {
         return result;
     }
 
-
     /**
      * Reads and returns the next line, excluding the line separator if present.
      *
@@ -315,7 +319,6 @@ public final class StdIn {
         }
     }
 
-
     /**
      * Reads and returns the remainder of the input, as a string.
      *
@@ -331,7 +334,6 @@ public final class StdIn {
         scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
         return result;
     }
-
 
     /**
      * Reads the next token  and returns the {@code String}.
@@ -572,12 +574,6 @@ public final class StdIn {
     }
 
     //// end: section (2 of 2) of code duplicated from In to StdIn
-
-
-    // do this once when StdIn is initialized
-    static {
-        resync();
-    }
 
     /**
      * If StdIn changes, use this to reinitialize the scanner.

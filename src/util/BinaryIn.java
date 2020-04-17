@@ -129,6 +129,25 @@ public final class BinaryIn {
         }
     }
 
+    /**
+     * Unit tests the {@code BinaryIn} data type.
+     * Reads the name of a file or URL (first command-line argument)
+     * and writes it to a file (second command-line argument).
+     *
+     * @param args the command-line arguments
+     */
+    public static void main(String[] args) {
+        BinaryIn in = new BinaryIn(args[0]);
+        BinaryOut out = new BinaryOut(args[1]);
+
+        // read one 8-bit char at a time
+        while (!in.isEmpty()) {
+            char c = in.readChar();
+            out.write(c);
+        }
+        out.flush();
+    }
+
     private void fillBuffer() {
         try {
             buffer = in.read();
@@ -203,7 +222,6 @@ public final class BinaryIn {
         // because buffer will be -1
     }
 
-
     /**
      * Reads the next r bits from this binary input stream and return as an r-bit character.
      *
@@ -227,7 +245,6 @@ public final class BinaryIn {
         return x;
     }
 
-
     /**
      * Reads the remaining bytes of data from this binary input stream and return as a string.
      *
@@ -245,7 +262,6 @@ public final class BinaryIn {
         }
         return sb.toString();
     }
-
 
     /**
      * Reads the next 16 bits from this binary input stream and return as a 16-bit short.
@@ -338,7 +354,6 @@ public final class BinaryIn {
         return Float.intBitsToFloat(readInt());
     }
 
-
     /**
      * Reads the next 8 bits from this binary input stream and return as an 8-bit byte.
      *
@@ -348,25 +363,6 @@ public final class BinaryIn {
     public byte readByte() {
         char c = readChar();
         return (byte) (c & 0xff);
-    }
-
-    /**
-     * Unit tests the {@code BinaryIn} data type.
-     * Reads the name of a file or URL (first command-line argument)
-     * and writes it to a file (second command-line argument).
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        BinaryIn in = new BinaryIn(args[0]);
-        BinaryOut out = new BinaryOut(args[1]);
-
-        // read one 8-bit char at a time
-        while (!in.isEmpty()) {
-            char c = in.readChar();
-            out.write(c);
-        }
-        out.flush();
     }
 }
 

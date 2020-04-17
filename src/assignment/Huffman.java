@@ -27,31 +27,6 @@ public class Huffman {
     private Huffman() {
     }
 
-    // Huffman trie node
-    private static class Node implements Comparable<Node> {
-        private final char ch;
-        private final int freq;
-        private final Node left, right;
-
-        Node(char ch, int freq, Node left, Node right) {
-            this.ch = ch;
-            this.freq = freq;
-            this.left = left;
-            this.right = right;
-        }
-
-        // is the node a leaf node?
-        private boolean isLeaf() {
-            assert ((left == null) && (right == null)) || ((left != null) && (right != null));
-            return (left == null) && (right == null);
-        }
-
-        // compare, based on frequency
-        public int compareTo(Node that) {
-            return this.freq - that.freq;
-        }
-    }
-
     /**
      * Reads a sequence of 8-bit bytes from standard input; compresses them
      * using Huffman codes with an 8-bit alphabet; and writes the results
@@ -80,7 +55,6 @@ public class Huffman {
 
 
     }
-
 
     /**
      * Reads a sequence of bits that represents a Huffman-compressed message from
@@ -121,7 +95,6 @@ public class Huffman {
         return pq.delMin();
     }
 
-
     // write bit-string encoded trie to standard output
     private static void writeTrie(Node x) {
         if (x.isLeaf()) {
@@ -144,7 +117,6 @@ public class Huffman {
         }
     }
 
-
     private static Node readTrie() {
         boolean isLeaf = BinaryStdIn.readBoolean();
         if (isLeaf) {
@@ -162,6 +134,31 @@ public class Huffman {
      */
     public static void main(String[] args) {
 
+    }
+
+    // Huffman trie node
+    private static class Node implements Comparable<Node> {
+        private final char ch;
+        private final int freq;
+        private final Node left, right;
+
+        Node(char ch, int freq, Node left, Node right) {
+            this.ch = ch;
+            this.freq = freq;
+            this.left = left;
+            this.right = right;
+        }
+
+        // is the node a leaf node?
+        private boolean isLeaf() {
+            assert ((left == null) && (right == null)) || ((left != null) && (right != null));
+            return (left == null) && (right == null);
+        }
+
+        // compare, based on frequency
+        public int compareTo(Node that) {
+            return this.freq - that.freq;
+        }
     }
 
 }

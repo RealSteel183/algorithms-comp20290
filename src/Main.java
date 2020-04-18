@@ -1,6 +1,8 @@
 import util.StdIn;
 import util.StdOut;
 
+import java.util.InputMismatchException;
+
 /**
  * Main class to showcase the features of the repository.
  *
@@ -128,8 +130,8 @@ public class Main {
         int input = -1;
         while (input == -1) {
             try {
-                input = Integer.parseInt(StdIn.readString());
-            } catch (NumberFormatException e) {
+                input = StdIn.readInt();
+            } catch (InputMismatchException e) {
                 StdOut.println("Invalid choice, please try again!");
                 showMenu();
             }

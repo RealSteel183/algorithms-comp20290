@@ -15,7 +15,7 @@ Run [Main.java](./src/Main.java) to view the features of the repository.
 The contents and documented results/graphs are summarised below.  
 
 ## Summary
-| # | Title | File | Description |  
+| # | Topic | File | Description |  
 |---| ----- | ---- | ----------- |
 | 1 | [Algorithm Analysis](./src/p1) | [RussianPeasant](./src/p1/RussianPeasant.java) | Multiplies two numbers using the Russian Peasant's algorithm.
 | 2 | [Complexity Analysis](./src/p2) | [ThreeSumA](./src/p2/ThreeSumA.java) | Uses brute force to count the number of triples in a file, summing to 0. <br> Complexity = O(n<sup>3</sup>)
@@ -35,9 +35,8 @@ The contents and documented results/graphs are summarised below.
 | 9 | [Run Length Compression](./src/p9) | [RunLengthStrings](./src/p9/RunLengthStrings.java) | Compresses a String provided as a command line argument. <br> See class description for usage details.
 | | | [CustomInput](./src/p9/CustomInput.java) | Generates a custom input file filled with ASCII null characters, suitable for binary run length encoding.
 | | | 4runs.bin, 4runsrle.bin, <br> abra.txt, custom_input.txt, <br> custom_input_rle.txt, <br> q32x48.bin, q32x48rle.bin, <br> q64x96.bin, q64x96rle.bin | Data files for multiple experiments with run length compression. 
-| 10| Practical 10
-| 11| [Assignment: Huffman Compression](./src/assignment) | -|- |
-| 12| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment.
+| 10| [Assignment: Huffman Compression](./src/assignment) | -|- |
+| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment.
 
 ## Documentation
 Documented results and graphs for performance of some implemented algorithms.  
@@ -53,4 +52,4 @@ Documented results and graphs for performance of some implemented algorithms.
 ## Authors:
 * [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817
 * Dr. Mark Matthews, lecturer  
-Reference: Algorithms by Sedgewick and Wayne
+Reference: Algorithms by Robert Sedgewick and Kevin Wayne.

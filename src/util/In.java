@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
  */
 
 public final class In {
+
     //private static final String CHARSET_NAME = "UTF-8";
     private static final Locale LOCALE;
     private static final Pattern WHITESPACE_PATTERN;

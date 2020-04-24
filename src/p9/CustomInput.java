@@ -10,7 +10,10 @@ import java.io.IOException;
  *
  * @author Rajit Banerjee
  */
+
 public class CustomInput {
+
+    // Write 10 null character literals in custom_input.txt
     public static void main(String[] args) throws IOException {
         File file = new File("src/p9/custom_input.txt");
         FileWriter fw = new FileWriter(file);

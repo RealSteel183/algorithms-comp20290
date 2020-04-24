@@ -7,7 +7,9 @@ import util.StdOut;
  *
  * @author Rajit Banerjee
  */
+
 public class ElementarySortTest {
+
     private static final int[] ARRAY_SIZES = {10, 12, 100, 1000, 10000};
 
     // Run tests for all 3 sorting algorithms with arrays of various sizes

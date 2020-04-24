@@ -13,7 +13,9 @@ import java.util.Random;
  *
  * @author Rajit Banerjee
  */
+
 public class TestRunner {
+
     private static final ArrayList<Integer[]> RANDOM_ARRAYS = new ArrayList<>();
 
     /**

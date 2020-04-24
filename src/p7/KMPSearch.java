@@ -10,7 +10,9 @@ import java.util.Arrays;
  *
  * @author Rajit Banerjee
  */
+
 public class KMPSearch {
+
     public static int search(String pattern, String text) {
         int patLen = pattern.length();
         int textLen = text.length();

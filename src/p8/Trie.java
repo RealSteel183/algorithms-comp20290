@@ -9,7 +9,9 @@ import java.util.Arrays;
  *
  * @author Rajit Banerjee
  */
+
 public class Trie {
+
     // Number of symbols: 26 for the English alphabet
     private static final int ALPHABET_SIZE = 26;
     private static final TrieNode ROOT = new TrieNode();

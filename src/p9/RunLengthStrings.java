@@ -20,7 +20,9 @@ import util.StdOut;
  *
  * @author Rajit Banerjee
  */
+
 public class RunLengthStrings {
+
     /**
      * Compresses the input String and writes the
      * results to standard output.

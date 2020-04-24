@@ -26,7 +26,6 @@ package util;
  *
  */
 
-
 /**
  * The {@code HexDump} class provides a client for displaying the contents
  * of a binary file in hexadecimal.
@@ -43,6 +42,7 @@ package util;
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
+
 public class HexDump {
 
     // Do not instantiate.

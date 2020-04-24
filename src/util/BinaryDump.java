@@ -38,6 +38,7 @@ package util;
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
+
 public class BinaryDump {
 
     // Do not instantiate.

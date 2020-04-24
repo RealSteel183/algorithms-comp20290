@@ -8,7 +8,9 @@ import java.util.InputMismatchException;
  *
  * @author Rajit Banerjee
  */
+
 public class Main {
+
     public static void main(String[] args) throws Exception {
         StdOut.println("~ COMP20290: Algorithms, portfolio by Rajit Banerjee ~");
         showMenu();

@@ -8,7 +8,9 @@ import util.StdOut;
  *
  * @author Rajit Banerjee
  */
+
 public class BruteForce {
+
     /**
      * Brute force search for pattern in text.
      *

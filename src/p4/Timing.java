@@ -7,7 +7,9 @@ import java.util.concurrent.Callable;
  *
  * @author Rajit Banerjee
  */
+
 public class Timing {
+
     /**
      * @param callable a class that is Callable
      * @param <E>      generic type of return value of the call() method in callable

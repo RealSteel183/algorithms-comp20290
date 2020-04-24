@@ -36,6 +36,7 @@ import java.net.Socket;
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
+
 public final class BinaryOut {
 
     private BufferedOutputStream out;  // the output stream

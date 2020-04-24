@@ -11,7 +11,9 @@ import java.util.Scanner;
  *
  * @author Rajit Banerjee
  */
+
 public class SearchTest {
+
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(new File("src/p7/input.txt"));
         StdOut.println("~ Compare the performance of brute force and KMP substring search for input.txt ~");

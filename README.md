@@ -24,7 +24,7 @@ The contents and documented results/graphs are summarised below.
 | | | [Hanoi](./src/p3/Hanoi.java) | Solves the [Towers of Hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi) problem, for a user specified number of disks.
 | 4 | [Elementary Sorting](./src/p4) | [Sort](./src/p4/Sort.java) | Contains implementations of multiple sorting algorithms: selection, insertion, bogo, merge, enhanced merge, quick, and enhanced quick. <br> It implements the [Callable](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) interface, so the call() method invokes any of the required sort methods on any specified array.
 | | | [Timing](./src/p4/Timing.java) | Utility used in sort [TestRunner](./src/p4/TestRunner.java) to compute the nano time performance of a [Callable](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Callable.html) class object. 
-| | | [TestRunner](./src/p4/TestRunner.java) | Test framework to compare performance of various types of sorts defined in the [Sort](./src/p4/Sort.java) class. Depending on the user's choice, <br> 1. It can run a timing analysis for sorting randomly generated arrays of different sizes, <br> 2. It can visualise the sorts for small sized arrays.
+| | | [TestRunner](./src/p4/TestRunner.java) | Test framework to compare performance of various types of sorts defined in the [Sort](./src/p4/Sort.java) class. Depending on the user's choice, <br> 1. It can run a timing analysis for sorting randomly generated arrays of different sizes. <br> 2. It can visualise the sorts for small sized arrays.
 | | | [ElementarySortTest](./src/p4/ElementarySortTest.java) | Compares the performance of selection sort, insertion sort, and bogo sort. 
 | 5 | [Advanced Sorting I](./src/p5) | [MergeSortTest](./src/p5/MergeSortTest.java) | Compares the performance of insertion sort, merge sort, and enhanced merge sort. 
 | 6 | [Advanced Sorting II](./src/p6) | [QuickSortTest](./src/p6/QuickSortTest.java) | Compares the performance of merge sort, quick sort, and enhanced quick sort. 
@@ -36,7 +36,7 @@ The contents and documented results/graphs are summarised below.
 | | | [CustomInput](./src/p9/CustomInput.java) | Generates a custom input file filled with ASCII null characters, suitable for binary run length encoding.
 | | | 4runs.bin, 4runsrle.bin, <br> abra.txt, custom_input.txt, <br> custom_input_rle.txt, <br> q32x48.bin, q32x48rle.bin, <br> q64x96.bin, q64x96rle.bin | Data files for multiple experiments with run length compression. 
 | 10| [Assignment: Huffman Compression](./src/assignment) | -|- |
-| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment.
+| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment. See class descriptions for usage details.
 
 ## Documentation
 Documented results and graphs for performance of some implemented algorithms.  

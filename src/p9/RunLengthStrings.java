@@ -5,7 +5,7 @@ import util.StdOut;
 /*
  *  Compilation:  javac p9/RunLengthStrings.java
  *  Execution:    java p9/RunLengthStrings someString
- *  Dependencies: p9/StdOut.java
+ *  Dependencies: util/StdOut.java
  */
 
 /**

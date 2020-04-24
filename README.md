@@ -35,8 +35,9 @@ The contents and documented results/graphs are summarised below.
 | 9 | [Run Length Compression](./src/p9) | [RunLengthStrings](./src/p9/RunLengthStrings.java) | Compresses a String provided as a command line argument. <br> See class description for usage details.
 | | | [CustomInput](./src/p9/CustomInput.java) | Generates a custom input file filled with ASCII null characters, suitable for binary run length encoding.
 | | | 4runs.bin, 4runsrle.bin, <br> abra.txt, custom_input.txt, <br> custom_input_rle.txt, <br> q32x48.bin, q32x48rle.bin, <br> q64x96.bin, q64x96rle.bin | Data files for multiple experiments with run length compression. 
-| 10| [Assignment: Huffman Compression](./src/assignment) | -|- |
-| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](./src/assignment) assignment. See class descriptions for usage details.
+| 10| [Assignment: Huffman Compression](src/a1) | [Huffman](./src/a1/Huffman.java) | Compresses or decompresses files (or some binary input stream) using the Huffman coding algorithm.
+| | | genomeVirus.txt, medTale.txt, mobydick.txt, q32x48.bin | Data files for experiments with Huffman compression.
+| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](src/a1) assignment. See class descriptions for usage details.
 
 ## Documentation
 Documented results and graphs for performance of some implemented algorithms.  

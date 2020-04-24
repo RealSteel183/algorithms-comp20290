@@ -2,8 +2,8 @@ package util;
 
 /*
  *  Compilation:  javac util/RunLength.java
- *  Execution:    java util/RunLength - < p9/input.txt   (compress)
- *  Execution:    java util/RunLength + < p9/input.txt   (expand)
+ *  Execution:    java util/RunLength - < input  (compress)
+ *  Execution:    java util/RunLength + < input   (expand)
  *  Dependencies: p9/BinaryIn.java, p9/BinaryOut.java
  *  Data files:   https://algs4.cs.princeton.edu/55compression/4runs.bin
  *                https://algs4.cs.princeton.edu/55compression/q32x48.bin

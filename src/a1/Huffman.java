@@ -38,9 +38,14 @@ import util.StdOut;
  * <p>
  * 6. readTrie() - Private method to read a Huffman trie's encoded bits.
  * <p>
- * 7. Node - Inner static class to represent a Huffman trie node.
+ * 7. printStats(f1, f2) - Private method to display the number of bits in original file f1,
+ * number of bits in compressed file f2, and the compression ratio.
+ * *
+ * 8. countBits(file) - Private method to count the number of bits in the given file.
  * <p>
- * 8. The encoding and decoding use the 8-bit extended ASCII alphabet.
+ * 9. Node - Inner static class to represent a Huffman trie node.
+ * <p>
+ * 10. The encoding and decoding use the 8-bit extended ASCII alphabet.
  *
  * @author Rajit Banerjee
  */
@@ -160,6 +165,27 @@ public class Huffman {
         }
     }
 
+    // Display compression statistics: original bits, compressed bits, ratio
+    private static void printStats(String originalFile, String compressedFile) {
+        double originalBits = countBits(originalFile);
+        double compressedBits = countBits(compressedFile);
+        double ratio = (compressedBits / originalBits) * 100;
+        StdOut.printf("\nOriginal bits:\t\t\t%.0f", originalBits);
+        StdOut.printf("\nCompressed bits: \t\t%.0f", compressedBits);
+        StdOut.printf("\nCompression ratio:\t\t%.0f/%.0f = %.2f%%\n", compressedBits, originalBits, ratio);
+    }
+
+    // Count the number of bits in a given file (path)
+    private static int countBits(String file) {
+        BinaryIn binaryIn = new BinaryIn(file);
+        int count = 0;
+        while (!binaryIn.isEmpty()) {
+            binaryIn.readBoolean();
+            count++;
+        }
+        return count;
+    }
+
     /**
      * Sample client that calls {@code compress()} if the command-line
      * argument is "compress" an {@code decompress()} if it is "decompress".
@@ -181,16 +207,18 @@ public class Huffman {
             long t1 = System.currentTimeMillis();
             if (args[0].equals("compress")) {
                 compress();
+                StdOut.printf("\nTime taken for compression:\t%d milliseconds",
+                        (System.currentTimeMillis() - t1));
                 StdOut.printf("\nInput file (original):\t\t%s", args[1]);
                 StdOut.printf("\nOutput file (compressed):\t%s", args[2]);
-                StdOut.printf("\nTime taken for compression:\t%d milliseconds\n",
-                        (System.currentTimeMillis() - t1));
+                printStats(args[1], args[2]);
             } else {
                 decompress();
+                StdOut.printf("\nTime taken for decompression:\t%d milliseconds",
+                        (System.currentTimeMillis() - t1));
                 StdOut.printf("\nInput file (compressed):\t%s", args[1]);
                 StdOut.printf("\nOutput file (decompressed):\t%s", args[2]);
-                StdOut.printf("\nTime taken for decompression:\t%d milliseconds\n",
-                        (System.currentTimeMillis() - t1));
+                StdOut.printf("\nFinal bits (decompressed):\t%d\n", countBits(args[2]));
             }
         }
     }

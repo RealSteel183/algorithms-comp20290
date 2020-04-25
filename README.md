@@ -20,8 +20,8 @@ Documented results and graphs for performance of some implemented algorithms. Se
 |---| ---- | ----------- | 
 | 1 |  | Russian Peasant's algorithm timing analysis with inputs of different sizes.
 | 2 | [Complexity Analysis](./docs/Practical%202%20-%20Complexity%20Analysis.pdf) | Compares the performance of ThreeSumA and ThreeSumB to count triples summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
-| 3 | [Sorting](./docs/Sorting%20Graphs.xlsx) | Excel sheet containing graphs for practicals 4, 5 and 6: comparing performances of various sorting algorithms. Also see: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
-| 4 | [Substring Search](./docs/Search%20Time%20Graph.xlsx) | Excel sheet comparing the performance of brute force and KMP substring search algorithms, using data from the [input file](./src/p7/input.txt).
+| 3 | [Sorting](./docs/Practical%204,%205,%206%20-%20Sorting%20Graphs.xlsx) | Excel sheet containing graphs for practicals 4, 5 and 6: comparing performances of various sorting algorithms. Also see: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
+| 4 | [Substring Search](./docs/Practical%207%20-%20Search%20Time%20Graph.xlsx) | Excel sheet comparing the performance of brute force and KMP substring search algorithms, using data from the [input file](./src/p7/input.txt).
 | 5 | [Run Length Compression](./docs/Practical%209%20-%20Run%20Length%20Compression.pdf) | Documented results from run length compression experiments.
 | 6 | [Assignment: Huffman Compression](./Assignment%20-%20Huffman%20Compression.pdf) | Huffman tree drawing and compression analysis results. 
 
@@ -53,7 +53,7 @@ Brief summary of the ['src'](./src) directory.
 | | | genomeVirus_comp.txt, medTale_comp.txt, mobydick_comp.txt, q32x48_comp.bin, sample_comp.txt | Files after applying Huffman compression.
 | | | genomeVirus_decomp.txt, medTale_decomp.txt, mobydick_decomp.txt, q32x48_decomp.bin, sample_decomp.txt | Files after decompressing files that were already compressed using Huffman algorithm. These files are identical to the original data files.
 | | | q32x48_comp2.bin, sample_comp2.txt | Files obtained after compressing already compressed files q32x48_comp.bin and sample_comp.txt respectively.
-| 11| [Utilities](./src/util) | - | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](src/a1) assignment. See class descriptions for usage details.
+| 11| [Utilities](./src/util) | [BinaryDump](./src/util/BinaryDump.java), [BinaryIn](./src/util/BinaryIn.java), [BinaryOut](./src/util/BinaryOut.java), [BinaryStdIn](./src/util/BinaryStdIn.java), [BinaryStdOut](./src/util/BinaryStdOut.java), [HexDump](./src/util/HexDump.java), [In](./src/util/In.java), [MinPQ](./src/util/MinPQ.java), [RunLength](./src/util/RunLength.java), [StdIn](./src/util/StdIn.java), [StdOut](./src/util/StdOut.java) | Multiple utility programs written by Robert Sedgewick and Kevin Wayne, used throughout the repository, especially for [Run Length Compression](./src/p9) and the [Huffman Compression](src/a1) assignment. See class descriptions for usage details.
 
 ## Authors:
 * [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817

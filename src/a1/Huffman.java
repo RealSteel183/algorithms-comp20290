@@ -1,30 +1,32 @@
 package a1;
 
-import util.BinaryStdIn;
-import util.BinaryStdOut;
+import util.BinaryIn;
+import util.BinaryOut;
 import util.MinPQ;
+import util.StdOut;
 
 /*
  *  Compilation: javac a1/Huffman.java
- *  Execution: java a1/Huffman compress < input > output
- *  Execution: java a1/Huffman decompress < input > output
- *  Dependencies: util/BinaryStdIn.java, util/BinaryStdOut.java
+ *  Execution: java a1/Huffman compress inputFileName outputFileName
+ *  Execution: java a1/Huffman decompress inputFileName outputFileName
+ *  Dependencies: util/BinaryIn.java, util/BinaryOut.java, util/MinPQ.java, util/StdOut.java
  *
- *  Compress or expand a binary input stream using the Huffman algorithm.
+ *  Compress or decompress a given file using the Huffman algorithm (optimal
+ *  prefix-free coding).
  *
  *  Examples:
- * % java a1/Huffman compress < a1/medTale.txt > a1/medTale_comp.txt
- * % java a1/Huffman decompress < a1/medTale_comp.txt > a1/medTale_decomp.txt
+ * % java a1/Huffman compress a1/medTale.txt a1/medTale_comp.txt
+ * % java a1/Huffman decompress a1/medTale_comp.txt a1/medTale_decomp.txt
  *
  */
 
 /**
  * The {@code Huffman} class provides support for the following:
  * <p>
- * 1. compress() - Static method to compress binary input using Huffman coding.
+ * 1. compress() - Static method to compress a file using Huffman coding.
  * <p>
- * 2. decompress() - Static method to decompress binary input (reversing the
- * Huffman encoding process).
+ * 2. decompress() - Static method to decompress a compressed file (reversing
+ * the Huffman encoding process).
  * <p>
  * 3. buildTrie(freq) - Private method to build the Huffman trie using the
  * information about frequencies of characters in the text to be compressed.
@@ -46,18 +48,20 @@ import util.MinPQ;
 public class Huffman {
 
     private static final int ALPHABET_SIZE = 256; // extended ASCII
+    private static BinaryIn binaryIn;
+    private static BinaryOut binaryOut;
 
     private Huffman() {
     }
 
     /**
-     * Reads a sequence of 8-bit bytes from standard input; compresses them
+     * Reads a sequence of 8-bit bytes from a given file; compresses them
      * using Huffman codes with an 8-bit alphabet; and writes the results
-     * to standard output.
+     * to a given output file.
      */
     public static void compress() {
         // Read the input
-        char[] text = BinaryStdIn.readString().toCharArray();
+        char[] text = binaryIn.readString().toCharArray();
 
         // Tabulate frequency counts, build Huffman trie and code table
         int[] freq = new int[ALPHABET_SIZE];
@@ -68,16 +72,16 @@ public class Huffman {
         String[] table = new String[ALPHABET_SIZE];
         buildCode(table, root, "");
 
-        writeTrie(root); // Display trie
-        BinaryStdOut.write(text.length); // Bytes in original message
+        writeTrie(root); // Write the Huffman trie
+        binaryOut.write(text.length); // Bytes in original message
 
         // Text encoding (using Huffman code)
         for (char ch : text) {
             for (char code : table[ch].toCharArray()) {
-                BinaryStdOut.write(code == '1');
+                binaryOut.write(code == '1');
             }
         }
-        BinaryStdOut.close();
+        binaryOut.close();
     }
 
     /**
@@ -85,18 +89,18 @@ public class Huffman {
      * standard input; expands them; and writes the results to standard output.
      */
     public static void decompress() {
-        Node root = readTrie(); // Read Huffman trie
-        int numBytes = BinaryStdIn.readInt();
+        Node root = readTrie(); // Read the Huffman trie
+        int numBytes = binaryIn.readInt(); // Bytes in original message
         int i = 0;
         while (i++ < numBytes) {
             Node node = root;
             // Traverse Huffman trie until a leaf node is reached
             while (node.isInternal()) {
-                node = BinaryStdIn.readBoolean() ? node.getRight() : node.getLeft();
+                node = binaryIn.readBoolean() ? node.getRight() : node.getLeft();
             }
-            BinaryStdOut.write(node.getChar(), 8);
+            binaryOut.write(node.getChar(), 8);
         }
-        BinaryStdOut.close();
+        binaryOut.close();
     }
 
     // Build the Huffman trie, given the frequencies of every character in text
@@ -137,20 +141,20 @@ public class Huffman {
 
     // Write bit-string encoded trie to standard output
     private static void writeTrie(Node node) {
-        BinaryStdOut.write(!node.isInternal());
+        binaryOut.write(!node.isInternal());
         if (node.isInternal()) {
             writeTrie(node.getLeft());
             writeTrie(node.getRight());
         } else {
-            BinaryStdOut.write(node.getChar(), 8);
+            binaryOut.write(node.getChar(), 8);
         }
     }
 
     // Read Huffman trie from standard input
     private static Node readTrie() {
-        boolean isLeaf = BinaryStdIn.readBoolean();
+        boolean isLeaf = binaryIn.readBoolean();
         if (isLeaf) {
-            return new Node(BinaryStdIn.readChar(), -1, null, null);
+            return new Node(binaryIn.readChar(), -1, null, null);
         } else {
             return new Node('\0', -1, readTrie(), readTrie());
         }
@@ -163,13 +167,31 @@ public class Huffman {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        if (args[0].equals("compress")) {
-            compress();
-        } else if (args[0].equals("decompress")) {
-            decompress();
-        } else {
-            String message = "Invalid command! Please refer to Huffman class description.";
+        if (args.length != 3 && !args[0].equals("compress") && !args[0].equals("decompress")) {
+            String message = "\n\nInvalid command! See below for execution details:\n" +
+                    "% java a1/Huffman compress inputFileName outputFileName\n" +
+                    "% java a1/Huffman decompress inputFileName outputFileName\n" +
+                    "\nExamples:\n" +
+                    "% java a1/Huffman compress a1/medTale.txt a1/medTale_comp.txt\n" +
+                    "% java a1/Huffman decompress a1/medTale_comp.txt a1/medTale_decomp.txt\n";
             throw new IllegalArgumentException(message);
+        } else {
+            binaryIn = new BinaryIn(args[1]); // Input file
+            binaryOut = new BinaryOut(args[2]); // Output file
+            long t1 = System.currentTimeMillis();
+            if (args[0].equals("compress")) {
+                compress();
+                StdOut.printf("\nInput file (original):\t\t%s", args[1]);
+                StdOut.printf("\nOutput file (compressed):\t%s", args[2]);
+                StdOut.printf("\nTime taken for compression:\t%d milliseconds\n",
+                        (System.currentTimeMillis() - t1));
+            } else {
+                decompress();
+                StdOut.printf("\nInput file (compressed):\t%s", args[1]);
+                StdOut.printf("\nOutput file (decompressed):\t%s", args[2]);
+                StdOut.printf("\nTime taken for decompression:\t%d milliseconds\n",
+                        (System.currentTimeMillis() - t1));
+            }
         }
     }
 

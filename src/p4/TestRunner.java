@@ -28,12 +28,7 @@ public class TestRunner {
     public static void run(String[] sortTypes, int[] array_sizes) throws Exception {
         generateRandomArrays(array_sizes);
         promptUser();
-        int op = 0;
-        try {
-            op = StdIn.readInt();
-        } catch (InputMismatchException e) {
-            System.err.println("Invalid option!");
-        }
+        int op = readInt();
         switch (op) {
             case 1:
                 for (String type : sortTypes) {
@@ -74,6 +69,20 @@ public class TestRunner {
         StdOut.println("1. Run timing analysis.");
         StdOut.println("2. See sorted arrays (only small sizes).");
         StdOut.print("Choose 1 or 2: ");
+    }
+
+    // Ensures that user enters an integer choice
+    private static int readInt() {
+        int input = -1;
+        while (input == -1) {
+            try {
+                input = StdIn.readInt();
+            } catch (InputMismatchException e) {
+                StdOut.println("Invalid choice, please try again!");
+                promptUser();
+            }
+        }
+        return input;
     }
 
     // Timing analysis

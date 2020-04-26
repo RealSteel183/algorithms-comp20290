@@ -3,6 +3,8 @@ package p3;
 import util.StdIn;
 import util.StdOut;
 
+import java.util.InputMismatchException;
+
 /**
  * Recursive solution to the Towers of Hanoi problem.
  *
@@ -31,10 +33,25 @@ public class Hanoi {
 
     // Main method to take user input and solve Towers fo Hanoi
     public static void main(String[] args) {
+        StdOut.println("~ Towers of Hanoi ~");
         StdOut.println("Enter the number of disks: ");
-        int n = StdIn.readInt();
+        int n = readInt();
         towersOfHanoi(n, "SOURCE", "DESTINATION", "AUXILIARY");
         StdOut.println("Number of moves: " + (int) (Math.pow(2, n) - 1));
+    }
+
+    // Ensures that user enters an integer
+    private static int readInt() {
+        int input = -1;
+        while (input == -1) {
+            try {
+                input = StdIn.readInt();
+            } catch (InputMismatchException e) {
+                StdOut.println("Invalid choice, please try again!");
+                StdOut.println("Enter the number of disks: ");
+            }
+        }
+        return input;
     }
 
 }

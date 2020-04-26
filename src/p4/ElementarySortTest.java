@@ -15,6 +15,7 @@ public class ElementarySortTest {
     // Run tests for all 3 sorting algorithms with arrays of various sizes
     public static void main(String[] args) throws Exception {
         StdOut.println("~ Compare the performance of selection, insertion and bogo sorts ~");
+        StdOut.println("Warning: bogo sort takes indefinite amount of time (for option 1)");
         String[] sortTypes = {"selection_sort", "insertion_sort", "bogo_sort"};
         TestRunner.run(sortTypes, ARRAY_SIZES);
     }

@@ -31,7 +31,10 @@ public class Main {
                 "10. Compare the performance of brute force and KMP substring search for input.txt file\n" +
                 "11. Demonstrate construction of a Trie, and search for certain words\n" +
                 "12. Demonstrate some run length compression experiments\n" +
-                "\nEnter your choice (1-12) or 0 to exit:";
+                "13. Demonstrate some Huffman compression experiments\n" +
+                "14. View some documentation and algorithm performance graphs\n" +
+                "15. View portfolio summary\n" +
+                "\nEnter your choice (1-15) or 0 to exit:";
         StdOut.println(message);
     }
 
@@ -43,88 +46,153 @@ public class Main {
                 break;
             case 1:
                 p1.RussianPeasant.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 2:
                 String message = "~ Complexity analysis ~\n" +
                         "This demonstration requires the use of the command line.\n" +
-                        "Open your terminal to the src/ directory and follow the instructions below:\n" +
+                        "Open your terminal to the \\src directory and follow the instructions below:\n" +
                         "To count the triples summing to 0, you can use ThreeSumA (slow) or ThreeSumB (fast).\n" +
                         "The classes ThreeSumA and ThreeSumB have already been compiled.\n" +
                         "In your terminal, use any of these text files in place of \"FILE\" below:\n8ints.txt, " +
                         "1Kints.txt, 2Kints.txt, 4Kints.txt, 8Kints.txt, 16Kints.txt, 32Kints.txt\n\n" +
                         "$ java p2/ThreeSumA p2/FILE\nor,\n" +
                         "$ java p2/ThreeSumB p2/FILE\n\n" +
-                        "E.g. $ java p2/ThreeSumB p2/1Kints.txt\n\n" +
-                        "Enter 'x' when you are ready to proceed.";
+                        "Example:\n$ java p2/ThreeSumB p2/1Kints.txt\n";
                 StdOut.println(message);
-                while (Character.toLowerCase(StdIn.readChar()) != 'x') ;
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 3:
                 p3.Fibonacci.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 4:
                 p3.Hanoi.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 5:
                 p4.ElementarySortTest.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 6:
                 p5.MergeSortTest.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 7:
                 p6.QuickSortTest.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 8:
                 p7.BruteForce.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 9:
                 p7.KMPSearch.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 10:
                 p7.SearchTest.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 11:
                 p8.Trie.main(null);
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             case 12:
                 message = "~ Run length compression experiments ~\n" +
                         "This demonstration requires the use of the command line.\n" +
-                        "Open your terminal to the /src directory and follow the documentation PDF below:\n" +
-                        "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/blob/master/src/p9" +
-                        "/Practical%209%20-%20Run%20Length%20Compression.pdf\n" +
-                        "Enter 'x' when you are ready to proceed.";
+                        "Open your terminal to the \\src directory and follow the documentation PDF below:\n" +
+                        "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/blob/master/docs" +
+                        "/Practical%209%20-%20Run%20Length%20Compression.pdf\n";
                 StdOut.println(message);
-                while (Character.toLowerCase(StdIn.readChar()) != 'x') ;
-                showMenu();
-                execute(readInt());
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
+                break;
+            case 13:
+                message = "~ Huffman compression experiments ~\n" +
+                        "This demonstration requires the use of the command line.\n" +
+                        "Open your terminal to the \\src directory and follow the documentation PDF below:\n" +
+                        "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/blob/master/" +
+                        "Huffman%20Compression.pdf\n";
+                StdOut.println(message);
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
+                break;
+            case 14:
+                message = "~ Documentation and performance graphs ~\n" +
+                        "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/" +
+                        "tree/master/docs\n";
+                StdOut.println(message);
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
+                break;
+            case 15:
+                message = "~ Portfolio summary ~\n" +
+                        "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/" +
+                        "blob/master/README.md\n";
+                StdOut.println(message);
+                if (doContinue()) {
+                    showMenu();
+                    execute(readInt());
+                }
                 break;
             default:
                 StdOut.println("Invalid choice, please try again!");
                 showMenu();
                 execute(readInt());
         }
+    }
+
+    // Ask user if they want to continue seeing options
+    private static boolean doContinue() {
+        StdOut.println("Continue? (y/n): ");
+        String choice = StdIn.readString();
+        while (!choice.equalsIgnoreCase("y") &&
+                !choice.equalsIgnoreCase("n")) {
+            StdOut.println("Invalid choice, please try again!");
+            StdOut.println("Continue? (y/n): ");
+            choice = StdIn.readString();
+        }
+        return choice.equalsIgnoreCase("y");
     }
 
     // Ensures that user enters an integer choice

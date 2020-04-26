@@ -6,17 +6,19 @@ import util.StdOut;
  *  Compilation:  javac p9/RunLengthStrings.java
  *  Execution:    java p9/RunLengthStrings someString
  *  Dependencies: util/StdOut.java
+ *
+ *  Example:
+ *  % java p9/RunLengthStrings aaaabbbbbcdefff
+ *  Original string:
+ *  aaaabbbbbcdefff
+ *  Compressed string:
+ *  a4b5cdef3
+ *
  */
 
 /**
  * The {@code RunLengthStrings} class provides a static method for
  * compressing a String provided as command line argument.
- * E.g.
- * % java p9/RunLengthStrings aaaabbbbbcdefff
- * Original string:
- * aaaabbbbbcdefff
- * Compressed string:
- * a4b5cdef3
  *
  * @author Rajit Banerjee
  */

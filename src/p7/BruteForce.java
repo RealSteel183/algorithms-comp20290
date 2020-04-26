@@ -1,7 +1,8 @@
 package p7;
 
-import util.StdIn;
 import util.StdOut;
+
+import java.util.Scanner;
 
 /**
  * Brute force implementation of a substring search.
@@ -51,16 +52,17 @@ public class BruteForce {
 
     // Driver program to test above search function above
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         StdOut.println("~ Search for a pattern in text using brute force ~");
         StdOut.println("Enter text:");
-        String text = StdIn.readString();
+        String text = sc.nextLine();
         StdOut.println("Enter pattern:");
-        String pattern = StdIn.readString();
+        String pattern = sc.nextLine();
         int index = search(pattern, text);
         if (index == -1) {
-            StdOut.printf("\n%s NOT found in %s\n", pattern, text);
+            StdOut.printf("\n\"%s\" NOT found in \"%s\"\n", pattern, text);
         } else {
-            StdOut.printf("\n%s found in %s at index %d\n", pattern, text, index);
+            StdOut.printf("\n\"%s\" found in \"%s\" at index %d\n", pattern, text, index);
         }
     }
 

@@ -16,6 +16,7 @@ public class MergeSortTest {
     // Run tests for various sorting algorithms
     public static void main(String[] args) throws Exception {
         StdOut.println("~ Compare the performance of insertion, merge, and enhanced merge sorts ~");
+        StdOut.println("Warning: insertion sort takes some time for last array (option 1)");
         String[] sortTypes = {"enhanced_merge_sort", "merge_sort", "insertion_sort"};
         TestRunner.run(sortTypes, ARRAY_SIZES);
     }

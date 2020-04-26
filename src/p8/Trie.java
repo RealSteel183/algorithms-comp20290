@@ -62,11 +62,11 @@ public class Trie {
 
         // Construct trie
         for (String key : keys) {
-            insert(key);
+            insert(key.toLowerCase());
         }
         // Search for different keys
         String[] input = {"bank", "out", "band", "silver"};
-        StdOut.println("\nWords inserted in trie: " + Arrays.toString(keys));
+        StdOut.println("Words inserted in trie: " + Arrays.toString(keys));
         StdOut.println("Words to be searched in trie: " + Arrays.toString(input) + "\n");
         for (String word : input) {
             int index = search(word) ? 1 : 0;

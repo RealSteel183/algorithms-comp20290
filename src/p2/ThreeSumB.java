@@ -6,10 +6,14 @@ import java.util.Arrays;
 
 /**
  * Compilation:  javac p2/ThreeSumB.java
- * Execution:    java p2/ThreeSumB p2/input.txt
+ * Execution:    java p2/ThreeSumB inputFile
+ *
+ * Example:
+ * % java p2/ThreeSumB p2/8ints.txt
+ * % java p2/ThreeSumB p2/1Kints.txt
+ *
  * <p>
- * Reads n integers
- * and counts the number of triples that sum to exactly 0.
+ * Reads n integers and counts the number of triples that sum to exactly 0.
  * <p>
  * Limitations
  * -----------

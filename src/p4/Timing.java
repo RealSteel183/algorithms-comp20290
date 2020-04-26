@@ -20,8 +20,7 @@ public class Timing {
             throws Exception {
         long startTime = System.nanoTime();
         callable.call();
-        long endTime = System.nanoTime();
-        return endTime - startTime;
+        return System.nanoTime() - startTime;
     }
 
 }

@@ -40,8 +40,6 @@ public class TestRunner {
                     visualiseSort(type);
                 }
                 break;
-            default:
-                System.exit(0);
         }
     }
 
@@ -66,8 +64,8 @@ public class TestRunner {
 
     // Prompt the user to choose from a menu
     private static void promptUser() {
-        StdOut.println("1. Run timing analysis.");
-        StdOut.println("2. See sorted arrays (only small sizes).");
+        StdOut.println("\n1. Run timing analysis");
+        StdOut.println("2. See sorted arrays (only small sizes)");
         StdOut.print("Choose 1 or 2: ");
     }
 
@@ -77,6 +75,10 @@ public class TestRunner {
         while (input == -1) {
             try {
                 input = StdIn.readInt();
+                // Input must be 1 or 2
+                if (input != 1 && input != 2) {
+                    throw new InputMismatchException();
+                }
             } catch (InputMismatchException e) {
                 StdOut.println("Invalid choice, please try again!");
                 promptUser();

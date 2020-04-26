@@ -1,5 +1,6 @@
 package p8;
 
+import util.StdIn;
 import util.StdOut;
 
 import java.util.Arrays;
@@ -64,14 +65,11 @@ public class Trie {
         for (String key : keys) {
             insert(key.toLowerCase());
         }
-        // Search for different keys
-        String[] input = {"bank", "out", "band", "silver"};
+        // Search for a word
         StdOut.println("Words inserted in trie: " + Arrays.toString(keys));
-        StdOut.println("Words to be searched in trie: " + Arrays.toString(input) + "\n");
-        for (String word : input) {
-            int index = search(word) ? 1 : 0;
-            StdOut.printf("\t%s:\t%s\n", word, output[index]);
-        }
+        StdOut.println("Enter a word to search for:");
+        String input = StdIn.readString();
+        StdOut.printf("\t%s:\t%s\n", input, output[search(input) ? 1 : 0]);
     }
 
     // Inner class to represent the constituent node of a Trie

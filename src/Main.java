@@ -28,8 +28,8 @@ public class Main {
                 "7. Compare the performance of merge, quick, and enhanced quick sorts\n" +
                 "8. Search for a pattern in text using brute force\n" +
                 "9. Search for a pattern in text using Knuth-Morris-Pratt algorithm\n" +
-                "10. Compare the performance of brute force and KMP substring search for input.txt file\n" +
-                "11. Demonstrate construction of a Trie, and search for certain words\n" +
+                "10. Compare the performance of brute force and KMP substring search\n" +
+                "11. Demonstrate construction of a Trie, and search for a word\n" +
                 "12. Demonstrate some run length compression experiments\n" +
                 "13. Demonstrate some Huffman compression experiments\n" +
                 "14. View some documentation and algorithm performance graphs\n" +
@@ -54,14 +54,14 @@ public class Main {
             case 2:
                 String message = "~ Complexity analysis ~\n" +
                         "This demonstration requires the use of the command line.\n" +
-                        "Open your terminal to the \\src directory and follow the instructions below:\n" +
+                        "Open a new command prompt window to the \\src directory and follow the instructions below:\n" +
                         "To count the triples summing to 0, you can use ThreeSumA (slow) or ThreeSumB (fast).\n" +
                         "The classes ThreeSumA and ThreeSumB have already been compiled.\n" +
                         "In your terminal, use any of these text files in place of \"FILE\" below:\n8ints.txt, " +
                         "1Kints.txt, 2Kints.txt, 4Kints.txt, 8Kints.txt, 16Kints.txt, 32Kints.txt\n\n" +
                         "$ java p2/ThreeSumA p2/FILE\nor,\n" +
                         "$ java p2/ThreeSumB p2/FILE\n\n" +
-                        "Example:\n$ java p2/ThreeSumB p2/1Kints.txt\n";
+                        "Example:\n$ java p2/ThreeSumB p2/1Kints.txt";
                 StdOut.println(message);
                 if (doContinue()) {
                     showMenu();
@@ -134,9 +134,10 @@ public class Main {
             case 12:
                 message = "~ Run length compression experiments ~\n" +
                         "This demonstration requires the use of the command line.\n" +
-                        "Open your terminal to the \\src directory and follow the documentation PDF below:\n" +
+                        "Open a new command prompt window to the \\src directory and follow the documentation PDF " +
+                        "below:\n" +
                         "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/blob/master/docs" +
-                        "/Practical%209%20-%20Run%20Length%20Compression.pdf\n";
+                        "/Practical%209%20-%20Run%20Length%20Compression.pdf";
                 StdOut.println(message);
                 if (doContinue()) {
                     showMenu();
@@ -146,9 +147,10 @@ public class Main {
             case 13:
                 message = "~ Huffman compression experiments ~\n" +
                         "This demonstration requires the use of the command line.\n" +
-                        "Open your terminal to the \\src directory and follow the documentation PDF below:\n" +
+                        "Open a new command prompt window to the \\src directory and follow the documentation PDF " +
+                        "below:\n" +
                         "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/blob/master/" +
-                        "Huffman%20Compression.pdf\n";
+                        "Huffman%20Compression.pdf";
                 StdOut.println(message);
                 if (doContinue()) {
                     showMenu();
@@ -158,7 +160,7 @@ public class Main {
             case 14:
                 message = "~ Documentation and performance graphs ~\n" +
                         "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/" +
-                        "tree/master/docs\n";
+                        "tree/master/docs";
                 StdOut.println(message);
                 if (doContinue()) {
                     showMenu();
@@ -168,7 +170,7 @@ public class Main {
             case 15:
                 message = "~ Portfolio summary ~\n" +
                         "https://github.com/CompAlgorithms/algorithm-portfolio-20290-rajitbanerjee/" +
-                        "blob/master/README.md\n";
+                        "blob/master/README.md";
                 StdOut.println(message);
                 if (doContinue()) {
                     showMenu();
@@ -177,18 +179,17 @@ public class Main {
                 break;
             default:
                 StdOut.println("Invalid choice, please try again!");
-                showMenu();
                 execute(readInt());
         }
     }
 
     // Ask user if they want to continue seeing options
     private static boolean doContinue() {
-        StdOut.println("Continue? (y/n): ");
+        StdOut.println("\nContinue? (y/n): ");
         String choice = StdIn.readString();
         while (!choice.equalsIgnoreCase("y") &&
                 !choice.equalsIgnoreCase("n")) {
-            StdOut.println("Invalid choice, please try again!");
+            StdOut.println("\nInvalid choice, please try again!");
             StdOut.println("Continue? (y/n): ");
             choice = StdIn.readString();
         }
@@ -203,7 +204,6 @@ public class Main {
                 input = StdIn.readInt();
             } catch (InputMismatchException e) {
                 StdOut.println("Invalid choice, please try again!");
-                showMenu();
             }
         }
         return input;

@@ -17,20 +17,22 @@ public class SearchTest {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(new File("src/p7/input.txt"));
         StdOut.println("~ Compare the performance of brute force and KMP substring search for input.txt ~");
-        StdOut.println("TEXT SIZE\tBRUTE FORCE SEARCH\tKMP SEARCH");
-        while (sc.hasNext()) {
-            String pattern = sc.next();
-            String text = sc.next();
+        StdOut.println("Search times in nanoseconds:");
+        StdOut.println("Text Size\tBrute Force Search\tKMP Search\tIndex (BF)\tIndex (KMP)");
+        while (sc.hasNextLine()) {
+            // The text file contains alternating lines of patterns and text, each tes is 2 lines long
+            String pattern = sc.nextLine();
+            String text = sc.nextLine();
 
             long startTime = System.nanoTime();
-            BruteForce.search(pattern, text);
+            int i1 = BruteForce.search(pattern, text);
             long bruteForce = System.nanoTime() - startTime;
 
             startTime = System.nanoTime();
-            KMPSearch.search(pattern, text);
+            int i2 = KMPSearch.search(pattern, text);
             long kmp = System.nanoTime() - startTime;
 
-            StdOut.printf("%d\t%d\t%d\n", text.length(), bruteForce, kmp);
+            StdOut.printf("%5d\t%15d\t%15d\t%10d\t%10d\n", text.length(), bruteForce, kmp, i1, i2);
         }
     }
 

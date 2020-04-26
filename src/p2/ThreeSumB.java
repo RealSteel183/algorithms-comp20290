@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * Compilation:  javac p2/ThreeSumB.java
  * Execution:    java p2/ThreeSumB inputFile
- *
+ * <p>
  * Example:
  * % java p2/ThreeSumB p2/8ints.txt
  * % java p2/ThreeSumB p2/1Kints.txt

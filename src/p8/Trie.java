@@ -1,9 +1,9 @@
 package p8;
 
-import util.StdIn;
 import util.StdOut;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Builds a Trie data structure to help store and search for String keys.
@@ -68,7 +68,7 @@ public class Trie {
         // Search for a word
         StdOut.println("Words inserted in trie: " + Arrays.toString(keys));
         StdOut.println("Enter a word to search for:");
-        String input = StdIn.readString();
+        String input = new Scanner(System.in).nextLine();
         StdOut.printf("\t%s:\t%s\n", input, output[search(input) ? 1 : 0]);
     }
 

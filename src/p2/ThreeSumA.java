@@ -5,7 +5,7 @@ import util.In;
 /**
  * Compilation: javac p2/ThreeSumA.java
  * Execution: java p2/ThreeSumA inputFile
- *
+ * <p>
  * Example:
  * % java p2/ThreeSumA p2/8ints.txt
  * % java p2/ThreeSumA p2/1Kints.txt

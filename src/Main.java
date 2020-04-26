@@ -29,7 +29,7 @@ public class Main {
                 "8. Search for a pattern in text using brute force\n" +
                 "9. Search for a pattern in text using Knuth-Morris-Pratt algorithm\n" +
                 "10. Compare the performance of brute force and KMP substring search\n" +
-                "11. Demonstrate construction of a Trie, and search for a word\n" +
+                "11. Demonstrate word search in a Trie\n" +
                 "12. Demonstrate some run length compression experiments\n" +
                 "13. Demonstrate some Huffman compression experiments\n" +
                 "14. View some documentation and algorithm performance graphs\n" +

@@ -60,9 +60,9 @@ public class BruteForce {
         String pattern = sc.nextLine();
         int index = search(pattern, text);
         if (index == -1) {
-            StdOut.printf("\n\"%s\" NOT found in \"%s\"\n", pattern, text);
+            StdOut.printf("\"%s\" NOT found in \"%s\"\n", pattern, text);
         } else {
-            StdOut.printf("\n\"%s\" found in \"%s\" at index %d\n", pattern, text, index);
+            StdOut.printf("\"%s\" found in \"%s\" at index %d\n", pattern, text, index);
         }
     }
 

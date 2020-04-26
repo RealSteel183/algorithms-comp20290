@@ -16,14 +16,14 @@ The documented results/graphs followed by algorithm implementations, are summari
 ## Documentation
 Documented results and graphs for performance of some implemented algorithms. See ['docs'](./docs). 
 
-| # | File | Description |
-|---| ---- | ----------- | 
-| 1 | [Russian Peasant's Algorithm](./docs/Practical%201%20-%20Russian%20Multiplication.xlsx) | Excel sheet for Russian Peasant's algorithm timing analysis with inputs of different sizes.
-| 2 | [Complexity Analysis](./docs/Practical%202%20-%20Complexity%20Analysis.pdf) | Compares the performance of ThreeSumA and ThreeSumB to count triples summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
-| 3 | [Graphs: Sorting](./docs/Practical%204,%205,%206%20-%20Sorting%20Graphs.xlsx) | Excel workbook containing graphs for practicals 4, 5 and 6: comparing performances of various sorting algorithms. Also see: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
-| 4 | [Graph: Substring Search](./docs/Practical%207%20-%20Search%20Time%20Graph.xlsx) | Excel sheet comparing the performance of brute force and KMP substring search algorithms, using data from the [input file](./src/p7/input.txt).
-| 5 | [Run Length Compression](./docs/Practical%209%20-%20Run%20Length%20Compression.pdf) | Documented results from run length compression experiments.
-| 6 | [Assignment: Huffman Compression](./Huffman%20Compression.pdf) | Huffman tree drawing and compression analysis results. 
+| # | File | Type | Description |
+|---| ---- | ---- | ----------- | 
+| 1 | [Russian Peasant's Algorithm](./docs/Practical%201%20-%20Russian%20Multiplication.xlsx) | Excel | Russian Peasant's algorithm timing analysis with inputs of different sizes.
+| 2 | [Complexity Analysis](./docs/Practical%202%20-%20Complexity%20Analysis.pdf) | PDF | Compares the performance of ThreeSumA and ThreeSumB to count triples summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
+| 3 | [Sorting](./docs/Practical%204,%205,%206%20-%20Sorting%20Graphs.xlsx) | Excel | Compares performances of various sorting algorithms.<br> Also see PDFs: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
+| 4 | [Substring Search](./docs/Practical%207%20-%20Search%20Time%20Graph.xlsx) | Excel | Compares the performance of brute force and KMP substring search algorithms, using data from input.txt.
+| 5 | [Run Length Compression](./docs/Practical%209%20-%20Run%20Length%20Compression.pdf) |PDF | Run length compression experiments.
+| 6 | [Assignment: Huffman Compression](./Huffman%20Compression.pdf) | PDF | Huffman tree drawing and compression analysis results. 
 
 ## Summary
 Brief summary of the ['src'](./src) directory.
@@ -47,9 +47,9 @@ Brief summary of the ['src'](./src) directory.
 | p8 | [Tries](./src/p8) | [Trie](./src/p8/Trie.java) | Builds a Trie data structure to help store and search for String keys.
 | p9 | [Run Length Compression](./src/p9) | [RunLengthStrings](./src/p9/RunLengthStrings.java) | Compresses a String provided as a command line argument. <br> See class description for usage details.
 | | | [CustomInput](./src/p9/CustomInput.java) | Generates a custom input file filled with ASCII null characters, suitable for binary run length encoding.
-| | | 4runs.bin, 4runsrle.bin, abra.txt, custom_input.txt, custom_input_rle.txt, q32x48.bin, q32x48rle.bin, q64x96.bin, q64x96rle.bin | Data files for multiple experiments with run length compression. 
+| | | 4runs.bin, <br> 4runsrle.bin, abra.txt, custom_input.txt, custom_input_rle.txt, q32x48.bin,<br> q32x48rle.bin,<br> q64x96.bin,<br> q64x96rle.bin | Data files for multiple experiments with run length compression. 
 | a1| [Assignment: Huffman Compression](src/a1) | [Huffman](./src/a1/Huffman.java) | Compresses or decompresses files (provided as command line arguments) using the Huffman coding algorithm.
-| | | genomeVirus.txt, medTale.txt, mobydick.txt, q32x48.bin, sample.txt | Data files for experiments with Huffman compression.
+| | | genomeVirus.txt,<br> medTale.txt,<br> mobydick.txt,<br> q32x48.bin,<br> sample.txt | Data files for experiments with Huffman compression.
 | | | genomeVirus_comp.txt, medTale_comp.txt, mobydick_comp.txt, q32x48_comp.bin, sample_comp.txt | Files after applying Huffman compression.
 | | | genomeVirus_decomp.txt, medTale_decomp.txt, mobydick_decomp.txt, q32x48_decomp.bin, sample_decomp.txt | Files after decompressing files that were already compressed using Huffman algorithm. These files are identical to the original data files.
 | | | q32x48_comp2.bin, sample_comp2.txt | Files obtained after compressing already compressed files q32x48_comp.bin and sample_comp.txt respectively.

@@ -68,7 +68,7 @@ public class Trie {
         // Search for a word
         StdOut.println("Words inserted in trie: " + Arrays.toString(keys));
         StdOut.println("Enter a word to search for:");
-        String input = new Scanner(System.in).nextLine();
+        String input = new Scanner(System.in).nextLine().toLowerCase();
         StdOut.printf("\t%s:\t%s\n", input, output[search(input) ? 1 : 0]);
     }
 

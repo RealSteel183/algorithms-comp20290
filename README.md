@@ -20,10 +20,11 @@ Documented results and graphs for performance of some implemented algorithms. Se
 |---| ---- | ---- | ----------- | 
 | 1 | [Russian Peasant's Algorithm](./docs/Practical%201%20-%20Russian%20Multiplication.xlsx) | Excel | Russian Peasant's algorithm timing analysis with inputs of different sizes.
 | 2 | [Complexity Analysis](./docs/Practical%202%20-%20Complexity%20Analysis.pdf) | PDF | Compares the performance of ThreeSumA and ThreeSumB to count triples summing to 0, with input integers in files of increasing sizes (8ints to 32Kints).
-| 3 | [Sorting](./docs/Practical%204,%205,%206%20-%20Sorting%20Graphs.xlsx) | Excel | Compares performances of various sorting algorithms.<br> Also see PDFs: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
-| 4 | [Substring Search](./docs/Practical%207%20-%20Search%20Time%20Graph.xlsx) | Excel | Compares the performance of brute force and KMP substring search algorithms, using data from input.txt.
-| 5 | [Run Length Compression](./docs/Practical%209%20-%20Run%20Length%20Compression.pdf) |PDF | Run length compression experiments.
-| 6 | [Assignment: Huffman Compression](./Huffman%20Compression.pdf) | PDF | Huffman tree drawing and compression analysis results. 
+| 3 | [Nth Fibonacci](./docs/Practical%203%20-%20Fibonacci%20Graph.xlsx) | Excel | Timing comparison for iterative vs recursive Nth Fibonacci number computation.
+| 4 | [Sorting](./docs/Practical%204,%205,%206%20-%20Sorting%20Graphs.xlsx) | Excel | Compares performances of various sorting algorithms.<br> Also see PDFs: [Elementary Sorting](./docs/Practical%204%20-%20Elementary%20Sorting%20Algorithms.pdf), [Advanced Sorting I](./docs/Practical%205%20-%20Advanced%20Sorting%20Algorithms.pdf), [Advanced Sorting II](./docs/Practical%206%20-%20Advanced%20Sorting%20Algorithms%20II.pdf).
+| 5 | [Substring Search](./docs/Practical%207%20-%20Search%20Time%20Graph.xlsx) | Excel | Compares the performance of brute force and KMP substring search algorithms, using data from input.txt.
+| 6 | [Run Length Compression](./docs/Practical%209%20-%20Run%20Length%20Compression.pdf) |PDF | Run length compression experiments.
+| 7 | [Assignment: Huffman Compression](./Huffman%20Compression.pdf) | PDF | Huffman tree drawing and compression analysis results. 
 
 ## Summary
 Brief summary of the ['src'](./src) directory.

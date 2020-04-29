@@ -21,7 +21,7 @@ public class Main {
     private static void showMenu() {
         String message = "\nOptions available:\n1. Russian Peasant's multiplication algorithm\n" +
                 "2. Complexity analysis, to count triples summing to 0 in input files\n" +
-                "3. Compute the Nth Fibonacci number\n" +
+                "3. Compare iterative and recursive Fibonacci number computations\n" +
                 "4. Solve the Towers of Hanoi problem\n" +
                 "5. Compare the performance of selection, insertion and bogo sorts\n" +
                 "6. Compare the performance of insertion, merge, and enhanced merge sorts\n" +

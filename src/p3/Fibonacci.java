@@ -53,7 +53,8 @@ public class Fibonacci {
             try {
                 input = StdIn.readInt();
             } catch (InputMismatchException e) {
-                StdOut.println("Invalid input, please try again!");
+                StdOut.println("Invalid input, please try again!\n");
+                promptUser();
             }
         }
         return input;
@@ -63,15 +64,15 @@ public class Fibonacci {
     private static void runTiming() {
         StdOut.printf("\nTiming (in nanoseconds) for Nth Fibonacci computation");
         StdOut.printf("\n%8s\t%8s\t%8s", "N", "Iterative", "Recursive\n");
-        int n = 0;
-        while (n < 15) {
+        int N = 0;
+        while (N < 15) {
             final long t1 = System.nanoTime();
-            fibonacciIterative(n);
+            fibonacciIterative(N);
             final long t2 = System.nanoTime();
-            fib(n);
+            fib(N);
             final long t3 = System.nanoTime();
-            StdOut.printf("%8d\t%8d\t%8d\n", n, t2 - t1, t3 - t2);
-            n++;
+            StdOut.printf("%8d\t%8d\t%8d\n", N, t2 - t1, t3 - t2);
+            N++;
         }
     }
 

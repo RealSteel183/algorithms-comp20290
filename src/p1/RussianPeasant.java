@@ -13,34 +13,6 @@ import java.util.InputMismatchException;
 
 public class RussianPeasant {
 
-    // Main method to test the Russian Peasant's algorithm
-    public static void main(String[] args) {
-        StdOut.println("~ Russian Peasant's multiplication algorithm ~");
-        promptUser();
-        long choice = readLong();
-        switch ((int) choice) {
-            case 0:
-                break;
-            case 1:
-                runTiming();
-                break;
-            case 2:
-                StdOut.println("Enter two numbers to multiply:");
-                long a = readLong();
-                long b = readLong();
-
-                final long startTime = System.nanoTime();
-                long ans = RussianMultiply(a, b);
-                final long elapsedTime = System.nanoTime() - startTime;
-
-                StdOut.println("Product (" + a + " x " + b + ") = " + ans);
-                StdOut.println("Time taken: " + elapsedTime + " nanoseconds");
-                break;
-            default:
-                StdOut.println("Invalid input, please try again!");
-        }
-    }
-
     // Implement the Russian Peasant's algorithm
     private static long RussianMultiply(long m, long n) {
         long res = 0;
@@ -83,10 +55,39 @@ public class RussianPeasant {
             try {
                 input = StdIn.readLong();
             } catch (InputMismatchException e) {
-                StdOut.println("Invalid input, please try again!");
+                StdOut.println("Invalid input, please try again!\n");
+                promptUser();
             }
         }
         return input;
+    }
+
+    // Main method to test the Russian Peasant's algorithm
+    public static void main(String[] args) {
+        StdOut.println("~ Russian Peasant's multiplication algorithm ~");
+        promptUser();
+        long choice = readLong();
+        switch ((int) choice) {
+            case 0:
+                break;
+            case 1:
+                runTiming();
+                break;
+            case 2:
+                StdOut.println("Enter two numbers to multiply:");
+                long a = readLong();
+                long b = readLong();
+
+                final long startTime = System.nanoTime();
+                long ans = RussianMultiply(a, b);
+                final long elapsedTime = System.nanoTime() - startTime;
+
+                StdOut.println("Product (" + a + " x " + b + ") = " + ans);
+                StdOut.println("Time taken: " + elapsedTime + " nanoseconds");
+                break;
+            default:
+                StdOut.println("Invalid input, please try again!");
+        }
     }
 
 }

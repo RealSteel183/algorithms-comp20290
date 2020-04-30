@@ -189,7 +189,7 @@ public class Main {
         String choice = StdIn.readString();
         while (!choice.equalsIgnoreCase("y") &&
                 !choice.equalsIgnoreCase("n")) {
-            StdOut.println("\nInvalid choice, please try again!");
+            StdOut.println("Invalid choice, please try again!\n");
             StdOut.println("Continue? (y/n): ");
             choice = StdIn.readString();
         }

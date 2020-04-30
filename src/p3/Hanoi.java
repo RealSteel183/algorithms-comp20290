@@ -31,15 +31,6 @@ public class Hanoi {
         }
     }
 
-    // Main method to take user input and solve Towers fo Hanoi
-    public static void main(String[] args) {
-        StdOut.println("~ Towers of Hanoi ~");
-        StdOut.println("Enter the number of disks: ");
-        int n = readInt();
-        towersOfHanoi(n, "SOURCE", "DESTINATION", "AUXILIARY");
-        StdOut.println("Number of moves: " + (int) (Math.pow(2, n) - 1));
-    }
-
     // Ensures that user enters an integer
     private static int readInt() {
         int input = -1;
@@ -52,6 +43,15 @@ public class Hanoi {
             }
         }
         return input;
+    }
+
+    // Main method to take user input and solve Towers fo Hanoi
+    public static void main(String[] args) {
+        StdOut.println("~ Towers of Hanoi ~");
+        StdOut.println("Enter the number of disks: ");
+        int n = readInt();
+        towersOfHanoi(n, "SOURCE", "DESTINATION", "AUXILIARY");
+        StdOut.println("Number of moves: " + (int) (Math.pow(2, n) - 1));
     }
 
 }
